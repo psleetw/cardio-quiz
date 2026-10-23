@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TSOC 心臟血管內科專科醫師甄審 · 每日擬真題庫互動系統</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --primary-light: #e0f2fe;
+      --accent: #2563eb;
+      --success: #10b981;
+      --success-bg: #ecfdf5;
+      --danger: #ef4444;
+      --danger-bg: #fef2f2;
+      --warning: #f59e0b;
+      --warning-bg: #fffbeb;
+      --dark: #0f172a;
+      --slate: #334155;
+      --muted: #64748b;
+      --light-bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --radius: 16px;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* Lock Screen Modal */
+    #lockScreen {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .lock-card {
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: 20px;
+      padding: 36px 32px;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      animation: modalFadeIn 0.35s ease-out;
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .lock-icon-wrap {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: white;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      margin: 0 auto 18px;
+      box-shadow: 0 8px 16px rgba(2, 132, 199, 0.3);
+    }
+    .lock-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+    .lock-subtitle {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 24px;
+    }
+    .input-group {
+      position: relative;
+      margin-bottom: 16px;
+      text-align: left;
+    }
+    .input-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #475569;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .password-input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .lock-input {
+      width: 100%;
+      padding: 12px 44px 12px 14px;
+      border-radius: 10px;
+      border: 2px solid #cbd5e1;
+      font-size: 15px;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.2s;
+    }
+    .lock-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
+    }
+    .toggle-pwd-btn {
+      position: absolute;
+      right: 12px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      color: #94a3b8;
+    }
+    .remember-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      color: #475569;
+      cursor: pointer;
+      user-select: none;
+    }
+    .btn-unlock {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+    }
+    .btn-unlock:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(2, 132, 199, 0.35);
+    }
+    .lock-error {
+      margin-top: 14px;
+      font-size: 13px;
+      color: #ef4444;
+      font-weight: 600;
+      display: none;
+    }
+    .lock-hint {
+      margin-top: 18px;
+      font-size: 12px;
+      color: #94a3b8;
+      line-height: 1.5;
+      background: #f8fafc;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px dashed #cbd5e1;
+    }
+
+    /* Change Password Modal */
+    #changePwdModal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    #changePwdModal.show { display: flex; }
+
+    /* App Header */
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0369a1 100%);
+      color: white;
+      padding: 28px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .brand-text h1 {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand-text p {
+      font-size: 13px;
+      color: #94a3b8;
+    }
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .badge-live {
+      background: #10b981;
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .badge-live::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: white;
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+
+    .btn-hdr {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-hdr:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    /* Stats Dashboard */
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      background: rgba(255,255,255,0.08);
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .stat-label {
+      font-size: 11px;
+      color: #94a3b8;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .stat-val {
+      font-size: 20px;
+      font-weight: 800;
+      color: #38bdf8;
+    }
+
+    /* Container */
+    .main-container {
+      max-width: 1200px;
+      margin: 28px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 28px;
+    }
+    @media (max-width: 900px) {
+      .main-container { grid-template-columns: 1fr; }
+    }
+
+    /* Sidebar controls */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .panel {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .panel-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--slate);
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .search-box {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.2s;
+    }
+    .search-box:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }
+
+    .filter-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      text-align: left;
+      padding: 9px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      border: none;
+      background: transparent;
+      color: var(--slate);
+      cursor: pointer;
+      transition: all 0.15s;
+      margin-bottom: 4px;
+    }
+    .filter-btn:hover {
+      background: var(--light-bg);
+      color: var(--primary);
+    }
+    .filter-btn.active {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+    .count-pill {
+      font-size: 11px;
+      background: #e2e8f0;
+      padding: 2px 7px;
+      border-radius: 10px;
+      color: #475569;
+    }
+    .filter-btn.active .count-pill {
+      background: var(--primary);
+      color: white;
+    }
+
+    .mode-btn-group {
+      display: flex;
+      gap: 6px;
+      flex-direction: column;
+    }
+    .btn-mode {
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .btn-mode.active, .btn-mode:hover {
+      background: #0f172a;
+      color: white;
+      border-color: #0f172a;
+    }
+
+    /* Content Area */
+    .content-area {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .question-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 30px;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .question-card:hover {
+      box-shadow: var(--shadow-lg);
+    }
+
+    .q-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .q-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .q-num {
+      background: #0f172a;
+      color: white;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }
+    .q-tag {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .tag-CAD_PCI { background: #fee2e2; color: #991b1b; }
+    .tag-HF_CMP { background: #e0e7ff; color: #3730a3; }
+    .tag-EP { background: #fef3c7; color: #92400e; }
+    .tag-Valvular_ACHD { background: #ecfdf5; color: #065f46; }
+    .tag-Imaging_ICU { background: #f3e8ff; color: #6b21a8; }
+    .tag-Hypertension_Lipid { background: #ccfbf1; color: #115e59; }
+
+    .q-date {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .bookmark-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      color: #94a3b8;
+      transition: all 0.2s;
+    }
+    .bookmark-btn:hover, .bookmark-btn.bookmarked {
+      color: #f59e0b;
+      border-color: #f59e0b;
+      background: #fffbeb;
+    }
+
+    .q-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .q-stem {
+      font-size: 15px;
+      color: #1e293b;
+      white-space: pre-line;
+      background: #f8fafc;
+      padding: 20px;
+      border-radius: 12px;
+      border-left: 4px solid var(--primary);
+      margin-bottom: 22px;
+      line-height: 1.7;
+    }
+
+    /* Options */
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .option-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 18px;
+      border-radius: 10px;
+      border: 2px solid var(--border);
+      background: white;
+      cursor: pointer;
+      transition: all 0.15s ease-in-out;
+      font-size: 14.5px;
+      line-height: 1.5;
+    }
+    .option-item:hover:not(.locked) {
+      border-color: #cbd5e1;
+      background: #f8fafc;
+    }
+    .option-item.selected {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+    .option-item.correct {
+      border-color: var(--success) !important;
+      background: var(--success-bg) !important;
+      color: #065f46;
+      font-weight: 600;
+    }
+    .option-item.wrong {
+      border-color: var(--danger) !important;
+      background: var(--danger-bg) !important;
+      color: #991b1b;
+      text-decoration: line-through;
+    }
+    .option-radio {
+      margin-top: 3px;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    /* Action bar */
+    .card-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+    .btn {
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-submit {
+      background: var(--primary);
+      color: white;
+    }
+    .btn-submit:hover { background: var(--primary-dark); }
+    .btn-submit:disabled {
+      background: #cbd5e1;
+      cursor: not-allowed;
+    }
+    .btn-toggle-exp {
+      background: #f1f5f9;
+      color: var(--slate);
+    }
+    .btn-toggle-exp:hover { background: #e2e8f0; }
+
+    /* Feedback Banner */
+    .feedback-banner {
+      padding: 14px 18px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      font-weight: 700;
+      display: none;
+      align-items: center;
+      gap: 10px;
+    }
+    .feedback-banner.show { display: flex; }
+    .feedback-success {
+      background: var(--success-bg);
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+    .feedback-danger {
+      background: var(--danger-bg);
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    /* Explanation Drawer */
+    .explanation-box {
+      margin-top: 24px;
+      padding: 24px;
+      background: #f8fafc;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    .explanation-box.show { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+
+    .exp-sec {
+      margin-bottom: 18px;
+    }
+    .exp-title {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .exp-content {
+      font-size: 14px;
+      color: var(--slate);
+      line-height: 1.7;
+      white-space: pre-line;
+    }
+
+    .pearls-card {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 14px;
+    }
+    .pearls-card ul {
+      margin-left: 20px;
+      font-size: 13.5px;
+      color: #1e40af;
+      line-height: 1.7;
+    }
+
+    .trials-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .trial-pill {
+      background: #1e293b;
+      color: white;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+
+    footer {
+      background: #0f172a;
+      color: #64748b;
+      text-align: center;
+      padding: 24px;
+      font-size: 13px;
+      border-top: 1px solid #1e293b;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Lock Screen Overlay -->
+<div id="lockScreen">
+  <div class="lock-card">
+    <div class="lock-icon-wrap">🔒</div>
+    <h2 class="lock-title">TSOC 心專精銳題庫</h2>
+    <p class="lock-subtitle">Dr. Po-Sheng Lee (李博生醫師) 專用私人實證題庫</p>
+    
+    <div class="input-group">
+      <label class="input-label" for="passwordInput">請輸入專屬訪問密碼：</label>
+      <div class="password-input-wrap">
+        <input type="password" id="passwordInput" class="lock-input" placeholder="請輸入密碼" onkeydown="handlePasswordKey(event)" autofocus>
+        <button type="button" class="toggle-pwd-btn" onclick="togglePasswordVisibility('passwordInput', this)">👁️</button>
+      </div>
+    </div>
+
+    <label class="remember-wrap">
+      <input type="checkbox" id="rememberDevice" checked>
+      <span>記住此裝置（30 天內免重複輸入）</span>
+    </label>
+
+    <button type="button" class="btn-unlock" onclick="verifyPassword()">解鎖並進入題庫</button>
+    <div id="lockError" class="lock-error">⚠️ 密碼不正確，請重新輸入</div>
+
+    <div class="lock-hint">
+      💡 <strong>安全提示</strong>：預設密碼為 <code>cardio2026</code>。<br>
+      登入後可於右上角隨時自訂為您的個人專屬密碼。
+    </div>
+  </div>
+</div>
+
+<!-- Change Password Modal -->
+<div id="changePwdModal">
+  <div class="lock-card">
+    <h2 class="lock-title" style="font-size:18px;">🔑 變更專屬訪問密碼</h2>
+    <p class="lock-subtitle" style="margin-bottom:18px;">自訂後將即時生效，請牢記您的新密碼</p>
+    
+    <div class="input-group">
+      <label class="input-label" for="newPwdInput">新密碼：</label>
+      <div class="password-input-wrap">
+        <input type="password" id="newPwdInput" class="lock-input" placeholder="請輸入新密碼">
+        <button type="button" class="toggle-pwd-btn" onclick="togglePasswordVisibility('newPwdInput', this)">👁️</button>
+      </div>
+    </div>
+    <div class="input-group">
+      <label class="input-label" for="confirmPwdInput">確認新密碼：</label>
+      <input type="password" id="confirmPwdInput" class="lock-input" placeholder="請再次輸入新密碼">
+    </div>
+
+    <div style="display:flex; gap:10px; margin-top:20px;">
+      <button type="button" class="btn btn-toggle-exp" style="flex:1;" onclick="closeChangePwdModal()">取消</button>
+      <button type="button" class="btn btn-submit" style="flex:1;" onclick="saveNewPassword()">確認修改</button>
+    </div>
+    <div id="changePwdError" class="lock-error"></div>
+  </div>
+</div>
+
+<!-- Main Application UI -->
+<header>
+  <div class="header-container">
+    <div class="top-bar">
+      <div class="brand">
+        <div class="brand-icon">🫀</div>
+        <div class="brand-text">
+          <h1>TSOC 心專精銳題庫 · 每日實證擬真測驗</h1>
+          <p>Dr. Po-Sheng Lee (李博生醫師) 專用臨床複習與甄審訓練系統</p>
+        </div>
+      </div>
+      <div class="header-controls">
+        <span class="badge-live">每日定時更新系統</span>
+        <button class="btn-hdr" onclick="openChangePwdModal()">🔑 變更密碼</button>
+        <button class="btn-hdr" onclick="lockApp()">🔒 鎖定</button>
+        <button class="btn-hdr" onclick="resetAllProgress()">重設進度</button>
+      </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard">
+      <div class="stat-item">
+        <span class="stat-label">題庫總數</span>
+        <span class="stat-val" id="statTotal">18 題</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">已作答</span>
+        <span class="stat-val" id="statAnswered">0 題</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">正確率</span>
+        <span class="stat-val" id="statAccuracy">0%</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">星號收藏</span>
+        <span class="stat-val" id="statBookmarked">0 題</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">答錯待複習</span>
+        <span class="stat-val" id="statWrong">0 題</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="main-container">
+  <!-- Left Sidebar Controls -->
+  <aside class="sidebar">
+    <div class="panel">
+      <div class="panel-title">
+        <span>🔍 即時搜尋</span>
+      </div>
+      <input type="text" id="searchInput" class="search-box" placeholder="搜尋疾病、試驗、藥物..." oninput="handleSearch()">
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        <span>📑 測驗模式</span>
+      </div>
+      <div class="mode-btn-group">
+        <button class="btn-mode active" onclick="setMode('all')">📚 全題庫列表瀏覽</button>
+        <button class="btn-mode" onclick="setMode('random')">🎲 隨機精選測驗</button>
+        <button class="btn-mode" onclick="setMode('wrong')">❌ 錯題專區複習</button>
+        <button class="btn-mode" onclick="setMode('bookmarked')">⭐ 星號收藏題目</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        <span>🫀 次專科範疇篩選</span>
+      </div>
+      <div id="subspecialtyFilters"></div>
+    </div>
+  </aside>
+
+  <!-- Right Content Area -->
+  <section class="content-area" id="quizContainer"></section>
+</main>
+
+<footer>
+  <p>中華民國心臟學會（TSOC）專科醫師甄審精銳考題庫 · 每日上午 08:00 自動推播新題</p>
+  <p style="margin-top:6px;">資料來源依據 ACC/AHA、ESC、TSOC 指引與重大隨機對照試驗 (NEJM, Lancet, JAMA, JACC, EHJ)</p>
+</footer>
+
+<script>
+// SHA-256 for default 'cardio2026'
+const DEFAULT_HASH = "8a156f46e7b4fdb7f671c4368bfc4a4cb26afedf7d91ca85d4eb912a9aa884f3";
+
+async function sha256(str) {
+  const buf = new TextEncoder().encode(str);
+  const hash = await crypto.subtle.digest('SHA-256', buf);
+  return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+function getActivePasswordHash() {
+  return localStorage.getItem('tsoc_custom_pwd_hash') || DEFAULT_HASH;
+}
+
+async function verifyPassword() {
+  const input = document.getElementById('passwordInput').value;
+  const hash = await sha256(input);
+  const targetHash = getActivePasswordHash();
+
+  if (hash === targetHash) {
+    document.getElementById('lockError').style.display = 'none';
+    const remember = document.getElementById('rememberDevice').checked;
+    if (remember) {
+      localStorage.setItem('tsoc_auth_token', hash);
+    } else {
+      sessionStorage.setItem('tsoc_auth_token', hash);
+    }
+    unlockApp();
+  } else {
+    const err = document.getElementById('lockError');
+    err.style.display = 'block';
+    err.innerText = '⚠️ 密碼不正確，請重新輸入';
+    document.getElementById('passwordInput').value = '';
+    document.getElementById('passwordInput').focus();
+  }
+}
+
+function handlePasswordKey(e) {
+  if (e.key === 'Enter') verifyPassword();
+}
+
+function togglePasswordVisibility(inputId, btn) {
+  const input = document.getElementById(inputId);
+  if (input.type === 'password') {
+    input.type = 'text';
+    btn.innerText = '🙈';
+  } else {
+    input.type = 'password';
+    btn.innerText = '👁️';
+  }
+}
+
+function checkAuth() {
+  const activeHash = getActivePasswordHash();
+  const token = localStorage.getItem('tsoc_auth_token') || sessionStorage.getItem('tsoc_auth_token');
+  if (token && token === activeHash) {
+    unlockApp();
+  } else {
+    document.getElementById('lockScreen').style.display = 'flex';
+  }
+}
+
+function unlockApp() {
+  document.getElementById('lockScreen').style.display = 'none';
+}
+
+function lockApp() {
+  localStorage.removeItem('tsoc_auth_token');
+  sessionStorage.removeItem('tsoc_auth_token');
+  document.getElementById('passwordInput').value = '';
+  document.getElementById('lockError').style.display = 'none';
+  document.getElementById('lockScreen').style.display = 'flex';
+}
+
+function openChangePwdModal() {
+  document.getElementById('newPwdInput').value = '';
+  document.getElementById('confirmPwdInput').value = '';
+  document.getElementById('changePwdError').style.display = 'none';
+  document.getElementById('changePwdModal').classList.add('show');
+}
+
+function closeChangePwdModal() {
+  document.getElementById('changePwdModal').classList.remove('show');
+}
+
+async function saveNewPassword() {
+  const newPwd = document.getElementById('newPwdInput').value;
+  const confirmPwd = document.getElementById('confirmPwdInput').value;
+  const errBox = document.getElementById('changePwdError');
+
+  if (!newPwd || newPwd.length < 4) {
+    errBox.innerText = '⚠️ 密碼長度請至少輸入 4 個字元';
+    errBox.style.display = 'block';
+    return;
+  }
+  if (newPwd !== confirmPwd) {
+    errBox.innerText = '⚠️ 兩次輸入的密碼不一致';
+    errBox.style.display = 'block';
+    return;
+  }
+
+  const newHash = await sha256(newPwd);
+  localStorage.setItem('tsoc_custom_pwd_hash', newHash);
+  localStorage.setItem('tsoc_auth_token', newHash);
+  alert('✅ 專屬密碼變更成功！請牢記您的新密碼。');
+  closeChangePwdModal();
+}
+
+const rawQuestions = [{"id": 1, "date": "2026-10-07", "subspecialty": "HF_CMP", "subspecialty_name": "心臟衰竭與心肌病變", "title": "轉甲狀腺素類澱粉沉積症心肌病變（ATTR-CM）之非侵入性確診與標靶治療", "stem": "一位 73 歲男性因漸進性活動性呼吸困難（NYHA Functional Class III）與雙下肢水腫就診。病史顯示 5 年前曾接受雙側腕隧道症候群（Carpal tunnel syndrome）手術減壓，並有腰椎狹窄病史。\n• 理學檢查：血壓 108/68 mmHg、心跳 72 bpm；頸靜脈怒張、心尖搏動微弱、雙下肢凹陷性水腫。\n• 心電圖（ECG）：竇性心律，肢體導極呈現明顯低電壓（Low QRS voltage），V1–V3 呈偽梗塞型態（Pseudoinfarct pattern with QS waves）。\n• 經胸前超音波（TTE）：左心室對稱性肥厚（室間隔 18 mm、後壁 17 mm）、LVEF 46%；二尖瓣呈限制型充填型態；2D 斑點追蹤應變（GLS）呈現顯著之「心尖保留現象」（Apical sparing pattern）。\n• 檢驗：血清游離輕鏈比值（FLC ratio κ/λ）1.12（正常 0.26–1.65）；血清及尿液蛋白免疫固定電泳（sIFE/uIFE）均為陰性。\n• 影像：99mTc-PYP 閃爍攝影呈現 Perugini Grade 2 之強烈心肌攝取，經 SPECT 確認無血池殘留。\n\n針對此病人之診斷、病理生理及臨床處置，下列敘述何者最為適當？", "options": ["(A) 雖然 99mTc-PYP 為 Grade 2，在開始疾病特異性藥物治療前，仍必須先進行心內膜心肌切片（EMB）以取得組織學確診", "(B) 依據 ATTR-ACT 臨床試驗結果，給予口服 Tafamidis（61 mg 每日一次）可顯著降低此病人之全因死亡率及心血管相關住院率", "(C) 病人左心室顯著肥厚伴隨舒張功能不全，應常規積極向上滴定非雙氫吡啶類鈣離子阻斷劑（如 Diltiazem 或 Verapamil）以減慢心跳、延長舒張充填時間", "(D) 因血清游離輕鏈正常且免疫固定電泳陰性，可直接排除類澱粉沉積症，應優先轉診血液科評估骨髓造血不良症候群", "(E) 由於類澱粉沉積心肌病變患者的心肌結構受侵潤破壞，SGLT2 抑制劑（SGLT2i）在目前各國指引中皆列為絕對禁忌症（Class III）"], "answer": 1, "answer_letter": "B", "core_rationale": "在完全排除單株免疫球蛋白（sIFE/uIFE 陰性且血清 FLC 正常）且 99mTc-PYP 心肌攝影為 Grade 2/3（經 SPECT 確認）時，已達成非侵入性確診標準（特異性趨近 100%），不需常規執行心肌切片（EMB）。ATTR-ACT 試驗證實 Tafamidis 61 mg QD 顯著降低野生型與遺傳型 ATTR-CM 之 30 個月全因死亡率 30% 與心血管住院率 32%，獲指引 Class I 推薦。", "option_analysis": "• (A) 錯誤：已達成非侵入性診斷標準，無需心肌切片。\n• (B) 正確：ATTR-ACT 奠定 Tafamidis 第一線標靶地位。\n• (C) 錯誤：Non-DHP CCB 與 Digoxin 會與類澱粉纖維結合誘發嚴重毒性與心因性休克；限制型心肌生理之心輸出量依賴心率代償，使用 Beta-blockers 或 Non-DHP CCB 易引發血壓休克，屬臨床禁忌。\n• (D) 錯誤：FLC 與 IFE 正常僅排除 AL 輕鏈型，PYP Grade 2 正向確立 ATTR 型。\n• (E) 錯誤：SGLT2i 在 ATTR-CM 心衰竭患者中並非禁忌，具體液調節效益。", "pearls": ["ECG 低電壓與超音波嚴重肥厚矛盾時，首要懷疑 Cardiac Amyloidosis。", "GLS Apical Sparing（心尖保留率 > 1.0）具極高專一性。", "心臟類澱粉用藥大忌：絕對避免 Non-DHP CCB 與 Digoxin；慎用 Beta-blockers。"], "trials": ["ATTR-ACT (NEJM 2018)"]}, {"id": 2, "date": "2026-10-07", "subspecialty": "CAD_PCI", "subspecialty_name": "冠心病與介入治療", "title": "急性心肌梗塞合併心因性休克之血運重建策略與機械循環支持（DanGer Shock / CULPRIT-SHOCK）", "stem": "一位 62 歲男性因突發劇烈胸痛伴隨呼吸困難與冷汗被送至急診。\n• 生命徵象與理學檢查：血壓 82/54 mmHg（已在 Norepinephrine 0.2 mcg/kg/min 輸注下）、心跳 106 bpm、呼吸 24 bpm、血氧 92%；四肢冰冷且周邊脈搏微弱，雙肺底有明顯濕囉音。\n• 心電圖（ECG）：前壁 STEMI（V1–V4 ST 上升 3–5 mm，伴下壁導極鏡像壓低）。\n• 動脈血氣體分析：pH 7.27, 乳酸（Lactate）3.8 mmol/L。\n• 床邊超音波：前壁及心尖部大範圍 akinesia，LVEF 25%；無 VSR 或心包填塞。\n• 緊急冠狀動脈攝影：LAD 近端急性完全阻塞（TIMI 0 flow），LCx 50% 狹窄，RCA 40% 狹窄。\n\n針對此病人之血流動力學監測、機械性循環支持（MCS）與血運重建策略，下列敘述何者最為適當？", "options": ["(A) 依據 CULPRIT-SHOCK 臨床試驗結果，於此急診介入治療時，應立即對所有非罪犯病灶（LCx 與 RCA）一併進行常規預防性血管重建（Multivessel PCI），能降低 30 天死亡率，列為 Class I 推薦", "(B) 依據 IABP-SHOCK II 試驗，常規置入主動脈內氣球幫浦（IABP）能顯著降低 30 天與 1 年全因死亡率，應在冠狀動脈介入術前常規施行（Class I, LOE A）", "(C) 針對未合併昏迷且無機械性併發症之急性心肌梗塞合併心因性休克患者，指標性 DanGer Shock 試驗證實：常規早期置入微軸流左心室輔助裝置（Impella CP）合併標準照護，相較於單純標準照護，可顯著降低 180 天全因死亡率，但伴隨較高之嚴重出血、肢體缺血與腎臟替代治療風險", "(D) 若置放肺動脈導管（Swan-Ganz catheter）進行侵入性血流動力學評估，典型心因性休克之血流動力學特徵為心臟指數（Cardiac Index, CI）> 2.5 L/min/m²，且肺微血管楔壓（PCWP）< 12 mmHg", "(E) 若病人血壓持續惡化而單獨建立靜動脈體外膜氧合（VA-ECMO），由於逆行性主動脈灌流之特性，能直接減輕左心室後負荷（Afterload）並有效降低左心室舒張末期壓力（LVEDP），預防肺水腫發生"], "answer": 2, "answer_letter": "C", "core_rationale": "DanGer Shock (NEJM 2024) 證實 STEMI 合併心因性休克患者早期置入 Impella CP 顯著降低 180 天全因死亡率（45.8% vs. 58.5%, HR 0.74, p=0.04），但出血與下肢缺血併發症增加。CULPRIT-SHOCK (NEJM 2017) 證實休克急性期常規多血管介入反增加死亡率（Class III 危害），僅處理罪犯病灶（Culprit-only PCI）為 Class I。VA-ECMO 逆行灌流會增加 LV 後負荷，常需主動減壓（ECPELLA）。", "option_analysis": "• (A) 錯誤：CULPRIT-SHOCK 證實常規立即多血管 PCI 增加死亡與洗腎風險，為 Class III。\n• (B) 錯誤：IABP-SHOCK II 證實常規 IABP 無死亡率獲益，非 Class I。\n• (C) 正確：DanGer Shock 證實降低 180 天死亡率。\n• (D) 錯誤：典型心因性休克為 CI < 2.2 L/min/m² 且 PCWP > 15–18 mmHg。\n• (E) 錯誤：VA-ECMO 逆行送血會「增加」左心室後負荷，易致肺水腫，需 LV 減壓。", "pearls": ["休克血運重建原則：Culprit lesion only!（全面介入為 Class III 危害）。", "DanGer Shock (NEJM 2024)：Impella CP 降低 180 天死亡率（HR 0.74）。", "VA-ECMO 升高 LV Afterload，需警惕肺水腫並適時採用 ECPELLA 減壓。"], "trials": ["DanGer Shock (NEJM 2024)", "CULPRIT-SHOCK (NEJM 2017)", "IABP-SHOCK II (NEJM 2012)"]}, {"id": 3, "date": "2026-10-08", "subspecialty": "EP", "subspecialty_name": "心律不整與電生理", "title": "心房顫動合併收縮性心衰竭（AF with HFrEF）之導管消融、2024 ESC 指引變革與 CASTLE 實證", "stem": "一位 65 歲男性因陣發性心悸、呼吸急促伴隨活動耐力下降（NYHA Class III）近 3 週就醫。\n• 病史：高血壓 10 年，3 年前前壁心肌梗塞接受過 LAD PCI。\n• 理學檢查：血壓 116/74 mmHg，心跳 128 bpm 且呈現絕對不規則心律，雙下肢凹陷性水腫。\n• 心電圖（ECG）：心房顫動伴隨快速心室反應（AF with RVR，心室率 130 bpm）；完整性左束支傳導阻滯（LBBB），QRS 寬度 140 ms。\n• 心臟超音波：LVEDD 62 mm、LVEF 32%、左心房容積指數 46 mL/m²；二尖瓣輕中度逆流。\n• 檢驗：NT-proBNP 2,850 pg/mL、eGFR 72 mL/min/1.73 m²、K+ 4.3 mEq/L。\n• 用藥：Sacubitril/Valsartan, Empagliflozin, Spironolactone, Carvedilol。\n\n針對此 AF with HFrEF 病人之抗凝血血栓風險評估、心律控制、導管消融與預後，依據最新 2024 ESC 心房顫動指引與試驗，下列何者最為適當？", "options": ["(A) 因心電圖呈現 LBBB 且 LVEF 僅 32%，為達快速藥物整流並長期維持竇性心律，Class Ic 抗心律不整藥物（如 Propafenone 或 Flecainide）為首選推薦", "(B) 依據 CASTLE-AF 與 CASTLE-HTx 等隨機對照試驗實證，針對此類心房顫動合併收縮性心衰竭（HFrEF）患者，積極進行心房顫動導管消融（Catheter Ablation）能顯著逆轉左心室重塑、改善 LVEF，並顯著降低心衰竭惡化住院率與全因死亡率，獲指引 Class I 強烈推薦", "(C) 若成功進行導管消融且術後 6 個月內 24 小時動態心電圖（Holter）未再偵測到任何心房顫動復發，因心律已穩定維持竇性，可安全停用口服抗凝血劑（OAC）以避免出血風險", "(D) 依據 2024 年 ESC 最新心房顫動指引，中風風險評估模型已全面更新為 CHA2DS2-VA 計分；因本男性患者之評分僅為 1 分，口服抗凝血劑治療僅列為 Class IIb 之弱建議", "(E) 針對心衰竭患者之心室速率控制（Rate control），毛地黃（Digoxin）單藥治療在靜止及運動狀態下均優於乙型受體阻斷劑，可作為第一線首選降心率藥物，且治療期間無需監測血中濃度"], "answer": 1, "answer_letter": "B", "core_rationale": "CASTLE-AF (NEJM 2018) 與 CASTLE-HTx (NEJM 2023) 確立導管消融能顯著降低 HFrEF 合併 AF 患者之死亡與心衰住院率（Class I 推薦）。2024 ESC 指引三大變革：AF-CARE 路徑、移除女性性別計分改為 CHA2DS2-VA（本例分數為 4 分，屬 Class I 抗凝適應症）、以及消融成功絕不能停用抗凝血劑（續用完全依據基礎栓塞風險）。Class Ic 藥物在結構性心臟病與心梗病史者中為絕對禁忌（CAST 試驗）。", "option_analysis": "• (A) 錯誤：CAD 與 Reduced LVEF 者使用 Class Ic 藥物具有致死性致心律不整性（Class III 禁忌）。\n• (B) 正確：CASTLE 系列試驗確立導管消融能改善死亡與住院率（Class I）。\n• (C) 錯誤：消融成功不能停抗凝劑，長期 OAC 決策完全取決於 CHA2DS2-VA 基礎風險。\n• (D) 錯誤：本患有 CAD/MI (+1), HFrEF (+1), HTN (+1), Age 65 (+1)，總分 4 分，≥ 2 為 Class I 抗凝適應症。\n• (E) 錯誤：Digoxin 在運動時心率控制差且治療窗口窄，HFrEF 心率控制首選 Beta-blockers。", "pearls": ["AF in HFrEF：CASTLE-AF 與 CASTLE-HTx 證實導管消融顯著降低全因死亡率（Class I）。", "2024 ESC AF 指引更新：全面採用 CHA2DS2-VA（移除女性項目；門檻：≥ 2 分 Class I，1 分 Class IIa）。", "消融成功絕不可隨意停用抗凝血劑！"], "trials": ["CASTLE-AF (NEJM 2018)", "CASTLE-HTx (NEJM 2023)", "EAST-AFNET 4 (NEJM 2020)"]}, {"id": 4, "date": "2026-10-09", "subspecialty": "Valvular_ACHD", "subspecialty_name": "瓣膜與成人先天性心臟病", "title": "低流速低壓差主動脈瓣狹窄（Classical LFLG AS）之多巴酚丁胺壓力超音波與介入指引", "stem": "一位 76 歲男性因活動性呼吸困難（NYHA III）與胸悶就診。頸動脈遲緩微弱（Pulsus parvus et tardus），主動脈瓣區收縮期噴射性雜音伴 S2 減弱。\n• 靜止期 TTE：主動脈瓣三葉顯著鈣化；AVA 0.78 cm²（AVAi 0.44 cm²/m²）；Vmax 3.3 m/s；平均跨瓣壓差（ΔPmean）28 mmHg；LVEF 32%；SVI 26 mL/m²。臨床診斷為 Classical LFLG AS。\n• 低劑量多巴酚丁胺壓力超音波（DSE）：每搏輸出量（SV）由 48 mL 增至 62 mL（ΔSV = +29%）；ΔPmean 由 28 mmHg 升至 44 mmHg；最大劑量下計算 AVA 為 0.82 cm²。\n\n依據最新 ESC/EACTS 及 ACC/AHA 瓣膜指引，下列何者最為適當？", "options": ["(A) DSE 檢查結果顯示此病人為「偽重度主動脈瓣狹窄（Pseudo-severe AS）」，其主要病因為嚴重原發性心肌病變，此時進行主動脈瓣置換術並無效益且列為手術禁忌", "(B) DSE 證實病人具有流速/收縮儲備（Flow reserve / Contractile reserve），並確立為「真正重度主動脈瓣狹窄（True severe AS）」，應由心臟團隊（Heart Team）評估並強烈建議施行主動脈瓣置換（經導管 TAVI 或外科手術 SAVR）（Class I 推薦）", "(C) 若 DSE 檢查中病人未展現流速儲備（定義為 ΔSV < 20%），則可直接排除重度主動脈瓣狹窄，指引建議單純予以最佳心衰竭藥物治療，不應再進行其他影像檢查", "(D) 若進一步安排無顯影劑心臟電腦斷層（Non-contrast Cardiac CT）測量主動脈瓣鈣化積分（Aortic Valve Calcium score, Agatston score），在此男性病人中，鈣化積分 ≥ 1,200 AU 即可作為確立重度 AS 之診斷切點", "(E) 依據最新 ESC 瓣膜指引，單純經皮氣球主動脈瓣成形術（Balloon Aortic Valvuloplasty, BAV）不需後續瓣膜置換，即可作為高齡低流速低壓差 AS 病人長期改善存活率之 Class I 首選根治處置"], "answer": 1, "answer_letter": "B", "core_rationale": "DSE 輸注下 ΔSV ≥ 20% 代表具備流速儲備（Flow reserve）；血流增加後 Mean gradient 升至 ≥ 40 mmHg 且 AVA 仍 ≤ 1.0 cm²，確立為「真正重度 AS（True severe AS）」，瓣膜置換（76 歲首選 TAVI）為 Class I 推薦。若無流速儲備，應安排 CT 鈣化積分（男性門檻 ≥ 2,000 AU，女性 ≥ 1,200 AU）。BAV 僅為過渡橋接處置（Class IIb）。", "option_analysis": "• (A) 錯誤：壓差升至 44 且 AVA 仍 0.82，為 True severe AS（Pseudo-severe AS 為 AVA > 1.0 且壓差維持低檔）。\n• (B) 正確：具有流速儲備（ΔSV +29%）且確診為真正重度 AS，瓣膜置換列為 Class I。\n• (C) 錯誤：無流速儲備不能排除重度 AS，指引強烈建議接續安排 CT 鈣化積分鑑別。\n• (D) 錯誤：男性 CT 鈣化積分切點為 ≥ 2,000 AU（女性才是 ≥ 1,200 AU）。\n• (E) 錯誤：單純 BAV 復發率極高且無法改善存活，僅為暫時橋接（Class IIb）。", "pearls": ["Classical LFLG AS：LVEF < 50%, SVI ≤ 35, AVA ≤ 1.0, Mean gradient < 40 mmHg → 首選 Low-dose DSE。", "DSE 判讀：ΔSV ≥ 20% (Flow reserve)；Gradient ≥ 40 且 AVA ≤ 1.0 → True severe AS。", "CT 鈣化積分性別門檻：男性 ≥ 2,000 AU，女性 ≥ 1,200 AU。"], "trials": ["TOPAS Registry", "2021 ESC/EACTS VHD Guidelines"]}, {"id": 5, "date": "2026-10-10", "subspecialty": "Imaging_ICU", "subspecialty_name": "心血管影像與重症血流動力學", "title": "縮窄性心包膜炎（CP）與限制型心肌病變（RCM）之血流動力學與多模組影像鑑別", "stem": "一位 58 歲男性因頑固性腹水、下肢水腫及活動性呼吸困難（NYHA III）近 4 個月就醫。15 年前曾接受縱隔腔放療。\n• 理學檢查：頸靜脈怒張、Friedreich 徵候（深 y 下降）及 Kussmaul 徵候陽性；胸骨左緣聞及舒張早期心包叩擊音（Pericardial knock）；腹水伴肝腫大。\n• TTE：LVEF 56%；二尖瓣脈衝都卜勒吸氣時 E 波峰值流速下降 32%（變異 > 25%）；TDI 顯示 Medial e' 為 11.5 cm/s，Lateral e' 僅 7.8 cm/s（Annulus reversus）；肝靜脈吐氣相舒張期逆流。\n• 導管測壓：LV 與 RV 舒張期均見 Dip-and-plateau（平方根徵候）；四腔室充填壓均等化（RAP 18, RVEDP 19, LVEDP 20 mmHg）；吸氣時 RV 收縮壓由 34 升至 40，LV 收縮壓由 105 降至 90 mmHg（收縮期雙心室不協調 Systolic ventricular discordance）。\n\n針對此病人之診斷、影像判讀及處置，依據指引何者最為適當？", "options": ["(A) 二尖瓣中隔瓣環速度 Medial e'（11.5 cm/s）顯著高於外側壁 Lateral e'（7.8 cm/s），此現象為「逆轉環現象（Annulus reversus）」，是放射線引起心肌纖維化所致之限制型心肌病變（RCM）的特異性表徵", "(B) 同步心導管測壓顯示吸氣時右心室收縮壓上升、左心室收縮壓同時下降（雙心室收縮壓不協調），為「心室相互依存性增強（Enhanced ventricular interdependence）」的經典血流動力學表徵，可確立縮窄性心包膜炎（Constrictive Pericarditis, CP）之診斷", "(C) 在限制型心肌病變（RCM）患者中，二尖瓣血流 E 波具有吸氣相流速顯著下降（> 25%）以及吸氣相雙心室收縮壓不協調，為其必備之典型診斷標準", "(D) 若胸部電腦斷層（Chest CT）檢查顯示心包膜厚度正常（< 2 mm）且未見鈣化，即可百分之百完全排除縮窄性心包膜炎之可能性", "(E) 針對此放射線照射後誘發之慢性症狀性縮窄性心包膜炎，第一線根治療法為高劑量 Loop 利尿劑合併長期口服皮質類固醇，外科心包膜切除術（Pericardiectomy）因死亡率過高而列為絕對禁忌"], "answer": 1, "answer_letter": "B", "core_rationale": "心室相互依存性增強（Ventricular Interdependence，吸氣相 RV 收縮壓上升併發 LV 收縮壓下降，呈反向不協調 Discordance）為縮窄性心包膜炎（CP）之特異確診金標準（特異性 > 95%）。TDI 之 Annulus reversus（Medial e' ≥ 9 且 > Lateral e'）與二尖瓣 E 波吸氣流速下降 > 25% 均高度支持 CP。約 15–20% 的 CP 心包厚度可正常（< 2 mm）。慢性 CP 唯一根治療法為外科心包膜切除術（Class I）。", "option_analysis": "• (A) 錯誤：Annulus reversus（Medial e' > Lateral e'）是「縮窄性心包膜炎（CP）」之特異特徵（RCM 雙側 e' 均低且維持 Lateral > Medial）。\n• (B) 正確：吸氣相雙心室收縮壓不協調確立心室相互依存增強，確診 CP。\n• (C) 錯誤：二尖瓣顯著呼吸變異與不協調均為 CP 特徵（RCM 呼吸變異極小且呈同向 Concordance）。\n• (D) 錯誤：15–20% 的 CP 患者心包厚度正常（< 2 mm），不能單憑 CT 排除。\n• (E) 錯誤：慢性 CP 根治療法為外科心包膜切除術（Pericardiectomy）。", "pearls": ["心室相互依存性 (Ventricular Interdependence)：吸氣時 RV/LV 收縮壓呈不協調 (Discordance) → 確診 CP。", "Annulus reversus：Medial e' ≥ 9 cm/s 且 Medial e' > Lateral e'（外側壁被纖維心包綁架）。", "正常心包厚度（< 2 mm）絕不能排除縮窄性心包膜炎。"], "trials": ["Mayo Clinic CP Diagnostic Criteria (JACC 2014)", "2015 ESC Pericardial Guidelines"]}, {"id": 6, "date": "2026-10-11", "subspecialty": "Hypertension_Lipid", "subspecialty_name": "高血壓與血脂預防醫學", "title": "他汀不耐受患者之新型非他汀降脂藥物（Bempedoic acid / CLEAR Outcomes）與極高風險血脂目標", "stem": "一位 54 歲男性有高血壓與糖尿病史，3 個月前因前壁 STEMI 接受緊急 PCI 置入 DES。出院後使用 Rosuvastatin 20 mg 誘發嚴重近端肌痛伴 CK 升至 8x ULN，停藥緩解；低劑量 Atorvastatin 再挑戰再度復發肌痛伴 CK 6x ULN，確立為他汀不耐受。\n• 目前單用 Ezetimibe 10 mg QD，血壓 122/76 mmHg。\n• 血脂檢驗：TC 215, LDL-C 138, HDL-C 42, TG 175 mg/dL; Lp(a) 85 mg/dL; HbA1c 6.8%。\n\n針對此急性冠心症合併他汀不耐受病人之心血管危險分層、血脂目標與新藥實證，依據指引何者最為適當？", "options": ["(A) 依據 2022 年台灣心臟學會（TSOC）血脂異常管理指引，此近期發生急性冠心症之極高風險病人，其 LDL-C 治療目標為 < 70 mg/dL；因目前數值為 138 mg/dL，單純將 Ezetimibe 劑量倍增至 20 mg QD 即可有效達標，為指引首選策略", "(B) 針對此經證實為他汀類不耐受且合併近期心肌梗塞之患者，合併使用本培多酸（Bempedoic acid 180 mg QD）是具備實證的選擇；指標性 CLEAR Outcomes 試驗證實：其於肝臟中抑制 HMG-CoA 還原酶上游之 ATP 檸檬酸裂解酶（ACL），且骨骼肌因缺乏其活化酵素 ACSVL1 而不會產生活性代謝物，能顯著降低重大心血管不良事件（MACE）同時大幅減少肌肉相關副作用", "(C) 英克司蘭（Inclisiran）是一種每兩週皮下注射一次之單株抗體（Monoclonal antibody），其機轉為直接於循環血液中結合 PCSK9 蛋白質以阻斷其降解 LDL 受體", "(D) 因病人脂蛋白(a) 顯著升高（85 mg/dL），依據 REDUCE-IT 臨床試驗結果，應立即給予高純度 EPA 乙酯（Icosapent ethyl 4 g/day），能特異性降低血液中 Lp(a) 濃度達 80% 以上，為專一性降低 Lp(a) 之第一線標靶藥物", "(E) 由於病人對他汀類藥物出現嚴重肌肉不良反應，前蛋白轉化酶枯草桿菌蛋白酶/kexin 9 型抑制劑（PCSK9 抑制劑，如 Evolocumab 或 Alirocumab）在此類病人列為絕對禁忌症，以免誘發致死性橫紋肌溶解症"], "answer": 1, "answer_letter": "B", "core_rationale": "Bempedoic acid 抑制肝臟 ATP 檸檬酸裂解酶（ACL），其為前驅藥且活化酵素 ACSVL1 僅表現於肝臟而完全不存在於骨骼肌，機轉上避開肌肉毒性；CLEAR Outcomes (NEJM 2023) 證實降低 MACE 13%。近期 ACS 屬極高風險，2022 TSOC 血脂目標為 LDL-C < 55 mg/dL 且降幅 ≥ 50%。Inclisiran 為每 6 個月注射一次之 siRNA，非單株抗體。PCSK9 抑制劑在他汀不耐受者中極安全（Class I），非禁忌。", "option_analysis": "• (A) 錯誤：ACS 後屬極高風險，目標為 < 55 mg/dL 且降幅 ≥ 50%；Ezetimibe 標準劑量為 10 mg，倍增至 20 mg 無額外療效。\n• (B) 正確：CLEAR Outcomes 證實 Bempedoic acid 抑制 ACL、無骨骼肌活性且降低 MACE 13%。\n• (C) 錯誤：Inclisiran 是小干擾 RNA（siRNA），每 6 個月皮下注射一次，非每兩週之單株抗體。\n• (D) 錯誤：REDUCE-IT 是針對高 TG（135–499 mg/dL），Icosapent ethyl 無法專一大幅降 Lp(a) 80%。\n• (E) 錯誤：PCSK9 單株抗體不經肌肉代謝，在他汀不耐受者耐受良好（GAUSS-3 試驗），為 Class I 推薦。", "pearls": ["Bempedoic acid：抑制 ATP 檸檬酸裂解酶 (ACL)；骨骼肌缺乏 ACSVL1 活化酵素，無肌肉副作用 (CLEAR Outcomes)。", "ASCVD / Post-ACS 血脂目標：LDL-C < 55 mg/dL 且降幅 ≥ 50%（TSOC 2022）。", "Inclisiran：siRNA 催化降解 PCSK9 mRNA；施打間隔為「每 6 個月一次」。"], "trials": ["CLEAR Outcomes (NEJM 2023)", "FOURIER (NEJM 2017)", "REDUCE-IT (NEJM 2019)"]}, {"id": 7, "date": "2026-10-12", "subspecialty": "HF_CMP", "subspecialty_name": "心臟衰竭與心肌病變", "title": "阻塞型肥厚型心肌病變（oHCM）之肌凝蛋白抑制劑（Mavacamten）與猝死風險分層", "stem": "一位 42 歲男性網球選手活動性呼吸困難（NYHA III）伴運動頭暈 6 個月。胞弟 28 歲打籃球猝死。\n• 理學檢查：胸骨左下緣 Grade 3/6 雜音，Valsalva 用力期或站立時顯著增強，蹲下時減弱。\n• ECG：顯著 LVH，V3–V6 巨大對稱深倒 T 波，I, aVL, V4–V6 匕首狀 Q 波。\n• TTE：非對稱中隔肥厚（IVS 28 mm），二尖瓣前葉 SAM 現象；靜止期 LVOT 壓差 48 mmHg，Valsalva 誘發至 88 mmHg；LVEF 68%。\n• CMR：中隔 28 mm，LGE 佔左室心肌總質量 18%。48 小時 Holter 見 3 次頻繁 NSVT。\n• 用藥：已達最大耐受劑量 Metoprolol succinate 100 mg QD。\n\n針對此病人之處置、猝死（SCD）風險與新藥機轉，依據 ESC 及 AHA/ACC 指引何者最為適當？", "options": ["(A) 病人最大心室壁厚度尚未達 ≥ 30 mm，且從未發生過持續性心室頻脈（Sustained VT）或院外心跳停止，因此依據指引目前絕無植入式心臟去顫器（ICD）之初級預防適應症", "(B) 可考慮加用別構型心肌肌凝蛋白 ATP 酶抑制劑 Mavacamten；依據 EXPLORER-HCM 與 VALOR-HCM 試驗，其能減少肌動蛋白-肌凝蛋白過度交聯、顯著降低 LVOT 壓差並改善功能狀態，大幅減少對心室中隔減積手術（SRT）之需求，但用藥期間須定期監測 LVEF 以防可逆性收縮功能不全", "(C) 針對此類動態性左心室出口阻塞（oHCM）患者，若運動耐受力不佳，應優先合併使用二氫吡啶類鈣離子阻斷劑（如 Amlodipine）或硝化甘油（Nitrates），以降低血管阻力並減輕跨瓣壓差", "(D) 依據指引，本病患即便剛開始調整藥物，亦應跳過所有第二線內科標靶藥物，立即直接施行外科心室中隔切除術（Surgical myectomy）或酒精消融術（Alcohol septal ablation）作為第一線首選處置", "(E) Mavacamten 在人體內僅專一透過 CYP3A4 途徑代謝，臨床上毋需常規考量 CYP2C19 基因多型性，合併使用質子幫浦抑制劑（如 Omeprazole）亦完全不影響其血中濃度"], "answer": 1, "answer_letter": "B", "core_rationale": "Mavacamten 為別構型心肌肌凝蛋白 ATP 酶抑制劑，促使肌凝蛋白進入超鬆弛態（SRX），減少過度交聯；EXPLORER-HCM 與 VALOR-HCM 證實顯著降低 LVOT 壓差、改善 peak VO2 並免除 80% 以上中隔手術需求，需常規追蹤 LVEF。病患具備一等親青年猝死史、CMR LGE 18%（≥ 15%）、NSVT 與接近 30 mm 肥厚，具 ICD 初級預防強烈適應症（Class IIa）。血管擴張劑（DHP-CCB、硝酸鹽類）為絕對禁忌（Class III）。Mavacamten 主要經 CYP2C19 代謝。", "option_analysis": "• (A) 錯誤：一等親猝死史、CMR LGE 18%、NSVT、IVS 28 mm 均為重大危險因子，ICD 具 Class IIa 適應症。\n• (B) 正確：Mavacamten 在 EXPLORER-HCM 與 VALOR-HCM 證實能降壓差並免除手術。\n• (C) 錯誤：Amlodipine 與 Nitrates 會擴張血管降低前負荷，縮小左室腔並加劇 SAM 現象，為絕對禁忌（Class III）。\n• (D) 錯誤：侵入性中隔減積手術（SRT）僅保留給充分藥物治療（含 Mavacamten）後仍有症狀者。\n• (E) 錯誤：Mavacamten 主要經由 CYP2C19 代謝（亞洲人 15–20% 為慢代謝型），與 Omeprazole 併用血中濃度暴增。", "pearls": ["oHCM 雜音：Valsalva / 站立（前負荷降）→ 雜音變大；蹲下 / 握拳（前/後負荷增）→ 雜音變小。", "Mavacamten：心肌肌凝蛋白抑制劑 (EXPLORER-HCM / VALOR-HCM)；需常規監控 LVEF；注意 CYP2C19 代謝。", "oHCM 絕對禁忌：DHP-CCB (Amlodipine)、Nitrates、Digoxin。"], "trials": ["EXPLORER-HCM (Lancet 2020)", "VALOR-HCM (JACC 2022)", "2023 ESC Cardiomyopathy Guidelines"]}, {"id": 8, "date": "2026-10-13", "subspecialty": "CAD_PCI", "subspecialty_name": "冠心病與介入治療", "title": "血管內影像導引複雜 PCI（IVUS vs. OCT）實證（RENOVATE-COMPLEX-PCI）與支架優化標準", "stem": "一位 68 歲男性有高血壓、糖尿病及 CKD 3b 期病史（Creatinine 1.8 mg/dL, eGFR 38 mL/min/1.73 m²），因不穩定心絞痛接受心導管檢查。\n• 血管攝影：LM 正常；LAD 自近端至中段呈長達 38 mm 之重度瀰漫鈣化狹窄，跨越第一對角支（D1），為 Medina 1,1,1 真性分叉病變。\n• 決策：心臟團隊決定施行血管內影像導引之複雜經皮冠狀動脈介入治療（PCI）。\n\n針對此病人之影像工具選擇、支架擴張優化標準與實證，依據指引何者最為適當？", "options": ["(A) 針對此慢性腎臟病第 3b 期患者，光學同調斷層掃描（OCT）優於血管內超音波（IVUS），因 OCT 操作過程完全不需注射任何顯影劑，且穿透深度（5–6 mm）遠高於 IVUS，能更清楚辨識血管外彈性板（EEL）", "(B) 依據近期發表於新英格蘭醫學期刊之指標性試驗 RENOVATE-COMPLEX-PCI（NEJM 2023）與 OCTOBER（NEJM 2023），在複雜冠脈病變中常規使用血管內影像（IVUS 或 OCT）導引，相較於單純血管攝影導引，能顯著降低目標血管失敗率（TVF）、心因性死亡及支架血栓症，獲當前指引列為 Class I 強烈推薦", "(C) 於血管內影像評估中，非左主幹之 LAD 支架擴張優化（Optimal stent expansion）標準，定義為最小支架截面積（Minimal Stent Area, MSA）達 > 3.0 mm²，或擴張比例達參考血管截面積之 50% 以上即可", "(D) 若介入術後以 OCT 檢查發現支架遠端邊緣有一微小內膜夾層（Stent edge dissection），其圓周夾角 < 60°、縱向長度 < 2 mm 且未波及中膜外層，血流呈現 TIMI 3 flow，指引建議必須立即常規補置第二支支架予以完整覆蓋", "(E) ILUMIEN IV 與 RENOVATE-COMPLEX-PCI 等大型隨機對照試驗證實，單純血管攝影導引組之支架擴張程度與長期臨床預後完全不劣於影像導引組，因此血管內影像目前僅建議保留於臨床人體試驗用途"], "answer": 1, "answer_letter": "B", "core_rationale": "RENOVATE-COMPLEX-PCI (NEJM 2023) 與 OCTOBER (NEJM 2023) 確立血管內影像（IVUS/OCT）在複雜病變中能顯著降低目標血管失敗率（TVF）、心因性死亡與支架血栓，2024 ESC 指引升級為 Class I 推薦。OCT 需注射顯影劑且穿透淺（1–2 mm），對 CKD 3b 病人易誘發顯影劑腎病；IVUS 不需顯影劑且穿透深（5–6 mm），為 CKD 首選。非 LM 支架擴張優化標準為 MSA ≥ 5.5 mm² 或擴張率 ≥ 80%。微小良性夾層（< 60°, < 2 mm, TIMI 3）保守觀察即可。", "option_analysis": "• (A) 錯誤：OCT 必須注射顯影劑排空血液，CKD 易誘發腎損傷；IVUS 不需顯影劑且穿透深（5–6 mm），為 CKD 首選。\n• (B) 正確：RENOVATE-COMPLEX-PCI 與 OCTOBER 試驗確立血管內影像導引降低 TVF 與死亡之 Class I 地位。\n• (C) 錯誤：非 LM 優化擴張標準為 MSA ≥ 5.5 mm² 或擴張率 ≥ 80%（MSA 3.0 為嚴重擴張不全）。\n• (D) 錯誤：夾角 < 60°、長度 < 2 mm 且血流正常屬良性微小夾層，保守觀察即可。\n• (E) 錯誤：造影導引嚴重低估管徑，多項試驗證實影像導引在硬終點（死亡、支架血栓）具顯著臨床優勢。", "pearls": ["複雜病變 PCI 影像導引：RENOVATE-COMPLEX-PCI (NEJM 2023) 證實降低 TVF 36%，升級 Class I 推薦。", "IVUS vs. OCT：CKD 患者首選 IVUS（零顯影劑、穿透深 5–6 mm）；OCT 需打顯影劑且穿透淺（1–2 mm）。", "支架優化擴張標準：MSA ≥ 5.5 mm² 或 Expansion ≥ 80%。"], "trials": ["RENOVATE-COMPLEX-PCI (NEJM 2023)", "OCTOBER (NEJM 2023)", "ILUMIEN IV (NEJM 2023)"]}, {"id": 9, "date": "2026-10-14", "subspecialty": "EP", "subspecialty_name": "心律不整與電生理", "title": "寬 QRS 心搏過速之高階心電圖演算法判讀與 VT 電氣風暴消融實證（VANISH）", "stem": "一位 67 歲男性有陳舊性前壁心梗病史（LVEF 30%），植入雙腔 ICD。今晨因 8 小時內連續被電擊 4 次送急診。\n• 急診評估：面色蒼白冒冷汗，BP 88/56 mmHg, HR 185 bpm 規則。\n• 12 導極 ECG：規則寬 QRS 心搏過速（QRS 170 ms）；V1–V6 全為單相 QS 波型（胸前全負向一致性 Negative concordance）；aVR 起始呈現單相寬大 R 波；節律條見 P 波與 QRS 房室解離，偶見融合波（Fusion beats）。\n• 儀器判讀：過去 8 小時發生 4 次單型性 VT，電擊後數分鐘復發，診斷為心室頻脈電氣風暴（Electrical Storm）。\n\n針對此病人之 ECG 演算法鑑別、藥物與導管消融策略，依據 2022 ESC 指引何者最為適當？", "options": ["(A) 由於病人意識清楚且心律規則、收縮壓仍有 88 mmHg，第一線處置應給予靜脈推注 Verapamil（5 mg slow IV push）或 Adenosine，以迅速阻斷房室結傳導並終止心搏過速", "(B) 心電圖呈現胸前導極全負向一致性（Negative concordance）、aVR 導極起始單相 R 波、以及明確之房室解離（AV dissociation）伴隨融合波，具備極高特異性，可百分之百確診為心室頻脈（VT）", "(C) 針對此類疤痕相關單型性心室頻脈電氣風暴，指標性隨機對照試驗 VANISH 證實：積極向上升階抗心律不整藥物（Amiodarone 併用 Mexiletine），其在降低全因死亡、VT 風暴與 ICD 電擊之療效上，顯著優於緊急進行經導管電燒消融術（Catheter Ablation）", "(D) 依據 Brugada 演算法，若在胸前任一導極中觀察到 RS 複合波，即可斷然排除心室頻脈（VT），直接診斷為心室上心搏過速伴隨傳導異常（SVT with aberrancy）", "(E) 在心肌梗塞後疤痕相關 VT 電氣風暴的病理生理機轉中，交感神經過度活化對維持心輸出量至關重要；因此，深度鎮靜、氣管插管以及使用乙型受體阻斷劑均屬禁忌，以免誘發難治性休克"], "answer": 1, "answer_letter": "B", "core_rationale": "房室解離（AV dissociation）伴隨融合波具近 100% 特異性；胸前導極全負向一致性（Brugada 步驟一）與 aVR 起始 R 波（Vereckei 步驟一）均確立 VT 診斷。寬 QRS 且血壓低者使用 Verapamil 為致命禁忌（Class III 危害），不穩定 VT 首選同步電擊整流。VANISH (NEJM 2016) 證實導管電燒消融顯著優於升階藥物治療（Class I）。電氣風暴必須給予深度鎮靜阻斷交感神經惡性循環。", "option_analysis": "• (A) 錯誤：未明原因寬 QRS 心搏過速使用 Verapamil 極易誘發心因性休克致死，屬絕對禁忌。\n• (B) 正確：房室解離、負向一致性與 aVR 起始 R 波確診為 VT。\n• (C) 錯誤：VANISH 試驗證實導管電燒消融在降低死亡、VT 風暴與電擊上顯著「優於」升階藥物治療。\n• (D) 錯誤：胸前有 RS 需接續進入第 2–4 步，不能直接排除 VT。\n• (E) 錯誤：交感神經高張是風暴驅動力，深度鎮靜與非選擇性 Beta-blocker（Propranolol）為破除風暴之核心治療。", "pearls": ["WQT 金標準：房室解離 (AV Dissociation)、融合波 (Fusion beats) → 100% 確診 VT。", "致命大忌：Verapamil / Diltiazem 絕對不可用於未明原因寬 QRS 心搏過速！", "VANISH 試驗 (NEJM 2016)：心梗後難治性 VT，導管消融顯著優於升階藥物（Class I）。"], "trials": ["VANISH (NEJM 2016)", "2022 ESC Ventricular Arrhythmias Guidelines"]}, {"id": 10, "date": "2026-10-15", "subspecialty": "Valvular_ACHD", "subspecialty_name": "瓣膜與成人先天性心臟病", "title": "次發性二尖瓣逆流（SMR）之經導管夾合術（TEER / MitraClip）與 COAPT vs. MITRA-FR 實證", "stem": "一位 64 歲男性有缺血性心肌病變病史（4 年前下後壁心梗 PCI），規律服用收縮性心衰四大基石藥物，仍有活動性呼吸困難（NYHA III）。\n• ECG：竇性心律，窄 QRS（92 ms），下壁病理性 Q 波。\n• 理學檢查：心尖 Grade 3/6 全收縮期雜音傳導至腋下，雙下肢輕度水腫。\n• 超音波：LVEF 32%, LVESD 56 mm, LVEDV 175 mL（LVEDVi 92 mL/m²）；二尖瓣瓣葉正常，但下後壁 akinesia 致乳頭肌移位牽拉（Tenting height 11 mm）；重度次發性二尖瓣逆流（EROA 0.42 cm², RegVol 55 mL, EROA/LVEDV = 0.24 > 0.14）；PASP 46 mmHg。\n• 血管造影：原支架通暢，無殘留主要病灶。\n\n針對此病人之病理機轉（成比例 vs. 不成比例）與團隊處置，依據指引何者最為適當？", "options": ["(A) 因病人二尖瓣逆流源於缺血性心肌病變，單純進行外科二尖瓣置換手術（Surgically MV replacement）合併全腱索保留，是指引唯一列為 Class I 能顯著改善長期存活率的治本療法", "(B) 此病人之逆流特徵屬於「不成比例次發性二尖瓣逆流（Disproportionate Secondary MR）」，且完全符合 COAPT 臨床試驗之納入條件；在最佳藥物治療基礎上給予經導管二尖瓣邊緣對邊緣修補術（TEER，如 MitraClip），能顯著降低全因死亡率與心衰竭住院率，獲指引 Class IIa 強烈推薦", "(C) 指標性試驗 MITRA-FR 與 COAPT 結果一致，兩者均證實 MitraClip 能顯著降低 1 年死亡率，主因是 MITRA-FR 納入之病人左心室擴大程度更輕且二尖瓣逆流嚴重度更高", "(D) 病人 LVEF 為 32%，即便心電圖呈現正常窄 QRS（92 ms），在考慮任何二尖瓣介入手術前，指引強烈建議應先常規植入心臟再同步化去顫器（CRT-D）作為 Class I 適應症以改善心室收縮不同步", "(E) 次發性二尖瓣逆流因收縮期瓣葉牽拉受限（Tenting height > 10 mm），在傳統 Carpentier 分類中屬於 Type II（瓣葉運動過度），病理解剖需以外科部分葉片切除術為主"], "answer": 1, "answer_letter": "B", "core_rationale": "不成比例次發性二尖瓣逆流（Disproportionate SMR, EROA/LVEDV ≥ 0.14）代表逆流嚴重度超越左心室擴大程度，逆流本身是心衰惡化主力；COAPT (NEJM 2018) 證實 MitraClip + GDMT 降低 24 個月死亡率 38% 與心衰住院 47%（NNT 5.9），指引列為 Class IIa 推薦。MITRA-FR 為陰性試驗，因其納入成比例逆流（LVEDV 顯著擴大但 EROA 小）。窄 QRS（92 ms）植入 CRT 增加死亡率（Class III 危害）。SMR 牽扯受限屬 Carpentier Type IIIb。", "option_analysis": "• (A) 錯誤：缺血性 SMR 單純外科瓣膜置換圍術期死亡率高且未證實改善長期存活，非第一線 Class I。\n• (B) 正確：患者符合 COAPT 條件（LVEF 32%, LVESD 56 mm, EROA 0.42 cm², 不成比例逆流），TEER 列 Class IIa 推薦。\n• (C) 錯誤：MITRA-FR 結果為陰性（未降死亡率），且其左室擴大更嚴重（LVEDVi 135 mL/m²）但 EROA 較小。\n• (D) 錯誤：正常窄 QRS（92 ms）植入 CRT 會增加死亡率（ECHO-CRT 試驗，Class III 禁忌）。\n• (E) 錯誤：次發性 MR 收縮期活動受限屬於 Carpentier Type IIIb（Type II 為脫垂活動過度）。", "pearls": ["COAPT 試驗 (NEJM 2018)：不成比例 SMR (EROA/LVEDV ≥ 0.14) 施行 TEER 降低死亡率 38% (NNT 5.9)。", "COAPT 五大門檻：GDMT 達標、LVEF 20–50%、LVESD ≤ 70 mm、EROA ≥ 0.3 cm²、PASP ≤ 70 mmHg。", "Carpentier 分類：次發性牽拉受限為 Type IIIb；脫垂活動過度為 Type II。"], "trials": ["COAPT (NEJM 2018)", "5-Year COAPT (NEJM 2023)", "MITRA-FR (NEJM 2018)"]}, {"id": 11, "date": "2026-10-16", "subspecialty": "Imaging_ICU", "subspecialty_name": "心血管影像與重症血流動力學", "title": "急性右心室心肌梗塞合併心因性休克之血流動力學指標（PAPi / CPO / 輸液陷阱）", "stem": "一位 63 歲男性因突發下壁及右心室 STEMI（V4R ST 上升 2 mm）就醫，RCA 近端成功完成 Primary PCI。術後 CCU 出現頑固低血壓與休克。\n• 理學檢查：BP 78/50 mmHg（Norepinephrine 0.25 下）、心跳 96 bpm；頸靜脈怒張且 Kussmaul 徵候陽性；雙肺完全清晰無囉音；四肢冰冷、動脈血乳酸 4.2 mmol/L。\n• 床邊超音波：右室擴大且游離壁 akinesia，TAPSE 9 mm；舒張期心室中隔明顯壓向左心室（D-shaped LV）；左室腔室萎縮充填不足（Underfilled LV），LVEF 55%。\n• 肺動脈導管（PAC）：RAP 19, PAP 26/15 (mean 19), PCWP 13 mmHg; CO 2.7 L/min, CI 1.5 L/min/m²; MAP 59 mmHg。\n\n針對此病人之血流動力學指標（PAPi、CPO）、病理機轉與重症處置，下列敘述何者最為適當？", "options": ["(A) 計算其肺動脈搏動指數（Pulmonary Artery Pulsatility Index, PAPi）約為 0.58；在急性心肌梗塞相關休克中，PAPi < 0.9–1.0 合併 RAP/PCWP 比值 > 0.8 為急性右心室衰竭之特異性血流動力學表徵，強烈預示高死亡率與機械循環支持需求", "(B) 此病人的心臟功率輸出（Cardiac Power Output, CPO）計算值為 1.25 W，顯示體循環灌流能量充足，可明確排除心因性休克之診斷", "(C) 因病患雙肺呼吸音清晰且 PCWP 僅 13 mmHg，此時應立即常規給予 3,000 至 5,000 mL 生理食鹽水快速大量輸液灌注，為指引提升心輸出量之 Class I 首選處置", "(D) 若病人在強心升壓劑支持下血壓仍持續惡化，置入單純主動脈內氣球幫浦（IABP）能提供專一性右心室卸載（RV unloading），其臨床效果顯著優於右心專用微軸流循環輔助裝置（如 Impella RP）", "(E) 超音波所見之「D 型左心室（D-shaped LV）」代表左心室體積過負荷（Volume overload）與嚴重的左心室舒張期功能不全"], "answer": 0, "answer_letter": "A", "core_rationale": "PAPi = (PASP - PADP) / RAP = (26 - 15) / 19 = 0.58。在心梗休克中，PAPi < 0.9–1.0 合併 RAP/PCWP > 0.8（本例 1.46）為急性右心衰竭特異指標。CPO = (MAP x CO) / 451 = (59 x 2.7) / 451 = 0.35 W，< 0.6 W 代表高死亡率休克。RAP 已達 19 mmHg 且已見中隔左移（D-shaped LV），大量輸液會加劇心包限制壓縮左室導致循環崩潰（輸液禁忌）。難治性右心衰竭需 RV-MCS（Impella RP、ProtekDuo）。D-shaped LV 代表右心壓力與容量過載。", "option_analysis": "• (A) 正確：PAPi = 0.58 (< 0.9) 且 RAP/PCWP = 1.46 (> 0.8)，確立重度右心衰竭休克。\n• (B) 錯誤：CPO 正確計算值為 0.35 W（< 0.6 W 為重度休克），非 1.25 W。\n• (C) 錯誤：RAP 已高達 19 mmHg 且右心極度擴張，大量輸液會加劇中隔左移使左室充填崩潰，為致命處置。\n• (D) 錯誤：IABP 無法提供右心跨心室轉運與卸載，難治右心衰竭首選 Impella RP 或 ProtekDuo。\n• (E) 錯誤：D-shaped LV 代表「右心室」壓力與體積嚴重過負荷壓迫中隔，非左室過負荷。", "pearls": ["PAPi = (PASP - PADP) / RAP：< 0.9–1.0 為右心衰竭休克確診金標準。", "CPO = (MAP x CO) / 451：< 0.6 W 為休克死亡率最強預測指標。", "右心梗塞輸液禁忌：當 RAP/CVP ≥ 15 mmHg 伴隨 D-shaped LV 時，絕對禁止大量灌水！"], "trials": ["Korabathina et al. (CCI 2012 / PAPi)", "SHOCK Trial CPO (JACC 2004)"]}, {"id": 12, "date": "2026-10-17", "subspecialty": "Hypertension_Lipid", "subspecialty_name": "高血壓與血脂預防醫學", "title": "次發性高血壓——原發性醛固酮增多症（PA）篩檢 ARR 藥物調整、確認試驗與 AVS 金標準", "stem": "一位 46 歲男性抗藥性高血壓就醫。居家血壓 722 平均 162/98 mmHg；服用 Olmesartan, Amlodipine, HCTZ 三種足量降壓藥遵從性良好。血清鉀離子 3.1 mEq/L（自發性低血鉀），肌酸酐 0.9 mg/dL。醫師計畫安排血漿醛固酮/腎素比值（ARR）篩檢原發性醛固酮增多症（PA）。\n\n針對 ARR 檢測前藥物調整、判讀與分型，依據指引何者最為適當？", "options": ["(A) 為避免 ARR 出現偽陰性結果，礦物皮質素受體阻斷劑（MRA，如 Spironolactone 或 Eplerenone）必須至少停藥 4 至 6 週；停藥期間若需控制血壓，可安全改用對腎素-血管張力素系統干擾最小的 Alpha-1 受體阻斷劑（如 Doxazosin）及非雙氫吡啶類鈣離子阻斷劑（如 Verapamil）", "(B) 低血鉀見於超過 90% 以上的原發性醛固酮增多症患者；因此，血清鉀離子正常之難治性高血壓病人，可直接排除原發性醛固酮增多症，毋需安排 ARR 篩檢", "(C) 若 ARR 篩檢陽性且隨後經鹽水負荷試驗確診，高解析度腹部電腦斷層（CT）顯示左側腎上腺有一 1.2 cm 腺瘤而右側正常，即可直接施行左側腹腔鏡腎上腺切除術，不需再安排侵入性腎上腺靜脈採樣（AVS）", "(D) 乙型受體阻斷劑（Beta-blockers）會強烈刺激腎小球旁細胞釋放腎素，因此在 ARR 檢測前若未停用，容易因人為拉高血漿腎素活性（PRA）而導致偽陰性（False-negative）的篩檢結果", "(E) 進行生理食鹽水輸注確認試驗（Saline Infusion Test, SIT）時，靜脈輸注 2 公升生理食鹽水後，原發性醛固酮增多症患者體內之血漿醛固酮濃度（PAC）會因血容積擴張而被正常抑制至 < 5 ng/dL"], "answer": 0, "answer_letter": "A", "core_rationale": "MRA（Spironolactone、Eplerenone）會代償性使腎素大幅升高造成 ARR 偽陰性，必須停藥至少 4–6 週；過渡期降壓首選對 RAAS 無干擾之 Doxazosin 與 Verapamil。超過 50% 的 PA 患者為正常血鉀（Normokalemic），正常血鉀不可排除 PA。腎上腺無功能意外瘤盛行率高，單憑 CT 手術誤診率高達 30–40%，術前必須以腎上腺靜脈採樣（AVS）確認側化（Class I）。Beta-blocker 抑制腎素造成 ARR 偽陽性。PA 具自主分泌性，鹽水試驗後 PAC > 10 ng/dL。", "option_analysis": "• (A) 正確：MRA 需停藥 4–6 週防偽陰性，過渡期首選 Doxazosin 與 Verapamil。\n• (B) 錯誤：> 50% 的 PA 患者血鉀正常，正常血鉀絕不能排除 PA。\n• (C) 錯誤：CT 單純影像誤診率高達 30–40%，術前必須常規施行 AVS 確認功能側化。\n• (D) 錯誤：Beta-blocker 抑制腎素使分母 PRA 驟降，導致 ARR「偽陽性」，非偽陰性。\n• (E) 錯誤：PA 具自主分泌性，輸注鹽水後 PAC 依然 > 10 ng/dL（< 5 為正常人）。", "pearls": ["ARR 採檢黃金規則：MRA 必須停藥 4–6 週！過渡期首選 Doxazosin / Verapamil；採檢前必補足血鉀。", "迷思破解：超過半數 PA 患者血鉀完全正常（Normokalemic PA）。", "手術分型金標準：AVS 側化指標 (LI ≥ 4) 是手術唯一指針，不可單信 CT。"], "trials": ["Endocrine Society PA Guidelines (JCEM 2016)", "PATHWAY-2 (Lancet 2015)"]}, {"id": 13, "date": "2026-10-18", "subspecialty": "HF_CMP", "subspecialty_name": "心臟衰竭與心肌病變", "title": "肥胖型 HFpEF 之診斷模型（H2FPEF）與 STEP-HFpEF 及 FINEARTS-HF 重磅試驗突破", "stem": "一位 68 歲女性有高血壓、糖尿病史，活動性呼吸困難（NYHA III）伴下肢水腫 4 個月。身高 158 cm、體重 85.4 kg（BMI 34.2 kg/m²，重度肥胖）。\n• TTE：左室向心性肥厚（RWT 0.48），LVEF 58%；平均 E/e' 14.8；LAVI 38 mL/m²；V_TR 3.1 m/s（PASP 43 mmHg）。\n• 檢驗：NT-proBNP 540 pg/mL；eGFR 64 mL/min/1.73 m²；K+ 4.3 mEq/L。\n• 評分：H2FPEF 評分高達 7 分（機率 > 95%），確診為肥胖型射出分率保留心臟衰竭（HFpEF）。\n\n針對此病人之病理機轉與最新標靶藥物實證，依據指引何者最為適當？", "options": ["(A) SGLT2 抑制劑（如 Empagliflozin 或 Dapagliflozin）在 EMPEROR-Preserved 與 DELIVER 試驗中，於 LVEF > 50% 之亞群均未展現出任何心血管獲益，因此當前指引已將 SGLT2 抑制劑自 HFpEF 推薦清單中剔除（Class III）", "(B) 針對此肥胖合併 HFpEF（BMI 34.2 kg/m²）之特定表型患者，發表於新英格蘭醫學期刊之 STEP-HFpEF 試驗證實：每週皮下注射一次 Semaglutide（2.4 mg），能大幅改善堪薩斯城心肌病變生活品質評分（KCCQ-CSS）、增加 6 分鐘步行距離（6MWD），並在實質減輕體重之同時顯著降低體內全身發炎反應（hs-CRP）", "(C) 發表於新英格蘭醫學期刊之最新 FINEARTS-HF 試驗指出：新型非類固醇礦物皮質素受體拮抗劑 Finerenone 在 LVEF ≥ 40% 患者中，其降低心衰竭惡化事件之療效顯著劣於傳統 Spironolactone，且大幅增加了心血管死亡率", "(D) 在肥胖（Obesity）合併 HFpEF 患者體內，因脂肪組織過度表現利鈉胜肽清除受體，循環中 NT-proBNP 濃度會呈現病理性人為劇烈飆高；因此，若測得 NT-proBNP 僅輕度上升（如本例之 540 pg/mL），即可完全排除 HFpEF 之診斷", "(E) 依據最新歐洲心臟學會（ESC）指引，常規長期口服長效型高劑量硝化甘油（Isosorbide mononitrate）併用第五型磷酸二酯酶抑制劑（Sildenafil），已被列為全體 HFpEF 患者降低心室充填壓力之 Class I 治本首選建議"], "answer": 1, "answer_letter": "B", "core_rationale": "STEP-HFpEF (NEJM 2023) 證實 Semaglutide 2.4 mg 每週一次在肥胖 HFpEF 患者中淨增 KCCQ-CSS 7.8 分、減重 13.3%、6MWD 增加 20 米並顯著降低 CRP。EMPEROR-Preserved 與 DELIVER 確立 SGLT2i 為 HFpEF 之 Class I 首選基石。FINEARTS-HF (NEJM 2024) 證實 Finerenone 降低 HFmrEF/HFpEF 心衰惡化與死亡 16%（RR 0.84）。肥胖利鈉胜肽矛盾：NP 數值會被抑制反常偏低，不可因數值不高排除心衰竭。硝酸鹽類於 HFpEF 無效（NEAT-HFpEF）。", "option_analysis": "• (A) 錯誤：SGLT2 抑制劑在各大試驗證實降低心衰惡化 20%，為 HFpEF 第一線 Class I 首選推薦。\n• (B) 正確：STEP-HFpEF 證實 Semaglutide 大幅改善肥胖 HFpEF 之症狀評分、體能耐力與發炎指標。\n• (C) 錯誤：FINEARTS-HF 為重大陽性試驗，Finerenone 降低心衰惡化 16%，絕非劣於傳統藥物。\n• (D) 錯誤：肥胖患者之 NT-proBNP 是反常「偏低」而非飆高，數百 pg/mL 在肥胖者即強烈支持心衰竭。\n• (E) 錯誤：長效硝酸鹽類無法改善 HFpEF 且減少日常活動（NEAT-HFpEF），非推薦用藥。", "pearls": ["STEP-HFpEF (NEJM 2023)：Semaglutide 2.4 mg 每週一次革命性改善肥胖型 HFpEF 症狀與耐力。", "FINEARTS-HF (NEJM 2024)：非類固醇 MRA (Finerenone) 顯著降低心衰惡化 16% (RR 0.84)。", "肥胖利鈉胜肽陷阱：肥胖者 NP 被清除加速反常偏低，切勿輕易排除 HFpEF。"], "trials": ["STEP-HFpEF (NEJM 2023)", "FINEARTS-HF (NEJM 2024)", "EMPEROR-Preserved (NEJM 2021)"]}, {"id": 14, "date": "2026-10-19", "subspecialty": "CAD_PCI", "subspecialty_name": "冠心病與介入治療", "title": "缺血性非阻塞性冠心病（INOCA）之侵入性微血管生理學評估（CFR / IMR / ACh）與 CorMicA 實證", "stem": "一位 56 歲女性反覆運動性胸悶 9 個月（CCS III）。運動心電圖陽性（ST 壓低 1.5 mm）。\n• 冠狀動脈攝影：各大冠脈管壁平滑，狹窄均 < 20%（無阻塞性 CAD）。\n• 侵入性生理學評估（熱稀釋法，靜脈輸注 Adenosine）：\n  - FFR 0.88（正常 > 0.80）\n  - 冠狀動脈血流儲備（CFR）：1.6（異常 < 2.0）\n  - 微循環阻力指數（IMR）：34（異常 ≥ 25）\n• 冠脈內乙醯膽鹼（ACh）激發試驗：LAD 輕度收縮 15%（< 90%），無胸痛與 ST 偏移。\n\n針對此病人之診斷、機轉、CorMicA 試驗與處置，依據 2024 ESC 指引何者最為適當？", "options": ["(A) 因冠狀動脈造影顯示狹窄 < 20% 且 FFR 為 0.88，可完全排除心臟缺血性病因；應告知病患其症狀純屬身心精神官能症，並停用所有心血管藥物", "(B) 生理學數據（FFR 0.88、CFR 1.6、IMR 34）合併乙醯膽鹼試驗陰性，確立診斷為「冠狀動脈微血管功能障礙（CMD）/ 微血管性心絞痛（MVA）」；依據指標性 CorMicA 試驗，給予乙型受體阻斷劑、ACEI/ARB 及他汀類藥物之分層標靶治療，能顯著改善心絞痛症狀與生活品質", "(C) 於微血管阻力評估中，微循環阻力指數（IMR）≥ 25 代表微循環擴張功能完全正常，而 IMR < 10 方代表冠狀動脈微血管產生實質結構性重塑", "(D) 若於冠狀動脈內注射乙醯膽鹼後，LAD 出現 > 90% 之局部嚴重痙攣閉塞伴隨劇烈胸痛與 ST 段上升，則確立診斷為微血管性心絞痛（MVA），此時第一線首選藥物為短效高劑量乙型受體阻斷劑", "(E) 侵入性冠狀動脈血流儲備（CFR）僅專一性反映心外膜大血管（Epicardial artery）之直徑狹窄，在生理學上與微循環功能完全無關"], "answer": 1, "answer_letter": "B", "core_rationale": "造影無狹窄（INOCA）不代表無缺血；FFR 0.88 排除大血管缺血，但 CFR 1.6（< 2.0）且 IMR 34（≥ 25）確立微血管功能障礙（CMD / MVA）。CorMicA (Lancet 2018) 證實侵入性生理學引導之分層治療（CMD 給予 Beta-blocker, ACEI/ARB, Statin）顯著改善生活品質（SAQ +11.7 分）。ACh 誘發大血管痙攣 ≥ 90% 為血管痙攣性心絞痛（VSA），禁用 Beta-blocker，首選 CCB。在無大血管狹窄下，CFR 下降直接反映微血管儲備衰竭。", "option_analysis": "• (A) 錯誤：造影正常不能排除缺血，異常之 CFR 與 IMR 證實微血管病變，不可當精神官能症停藥。\n• (B) 正確：確立 CMD/MVA，CorMicA 試驗證實採用分層標靶治療顯著改善症狀評分。\n• (C) 錯誤：IMR 正常值為 < 25；IMR ≥ 25 代表微循環阻力異常增高與結構重塑。\n• (D) 錯誤：ACh 誘發大血管狹窄 ≥ 90% 為「血管痙攣性心絞痛（VSA）」，且 VSA 絕對禁用 Beta-blockers，首選 CCB。\n• (E) 錯誤：在 FFR 排除大血管狹窄時，CFR 下降特異性反映微血管床擴張儲備受損。", "pearls": ["INOCA 鑑別：MVA (FFR > 0.80, CFR < 2.0, IMR ≥ 25) vs. VSA (ACh 誘發大血管痙攣 ≥ 90%)。", "CorMicA 試驗 (Lancet 2018)：分層生理標靶治療改善 SAQ 生活品質 11.7 分 (Class IIa)。", "用藥大忌：VSA 絕對禁用 Beta-blocker（防 α1 受體收縮暴走），首選 CCB 與 Nitrates。"], "trials": ["CorMicA (Lancet 2018)", "2024 ESC CCS Guidelines"]}, {"id": 15, "date": "2026-10-20", "subspecialty": "EP", "subspecialty_name": "心律不整與電生理", "title": "先天性長 QT 症候群（LQTS 1/2/3）基因離子通道機轉、特異誘因與猝死次級預防", "stem": "一位 18 歲女性游泳校隊選手在決賽跳水入水後突發暈厥溺水，現場 AED 電擊 VF 一次復甦成功。過去一年劇烈游泳曾兩次不明暈厥；舅舅 22 歲游泳猝死。\n• 急診 ECG：竇性心搏過緩（56 bpm），QTc 522 ms（> 460 ms）；胸前導極呈特徵性基底寬大、上升平緩之 T 波（Broad-based T waves）。\n• TTE：結構與 LVEF 62% 完全正常。電解質正常。\n• 基因檢測：證實 KCNQ1 致病性喪失功能（Loss-of-function）突變，確診為 LQT1。\n\n針對此病人之機轉、誘因與猝死防治，依據 2022 ESC 指引何者最為適當？", "options": ["(A) 因病人曾經歷由心室顫動引起之心跳驟停並倖存（Aborted cardiac arrest），已確立具備植入式心臟去顫器（ICD）之 Class I 次級預防強烈適應症；此外，應常規終身服用長效非選擇性乙型受體阻斷劑（如 Nadolol），且必須嚴格禁止參加任何競技型游泳運動", "(B) 先天性長 QT 症候群第一型（LQT1）之分子機轉為 SCN5A 基因獲得功能（Gain-of-function）突變，導致晚期內向鈉電流（INa-late）過度增強；因此，晚期鈉通道阻斷劑 Mexiletine 為指引唯一推薦之第一線專一性標靶單藥治療", "(C) 冷水浸泡與劇烈游泳為長 QT 症候群第二型（LQT2）之特異性猝死誘發情境；而在 LQT1 患者中，猝死多好發於突發性高分貝聲音刺激（如鬧鐘聲、電話鈴聲）或睡眠休息時", "(D) 由於心臟超音波結構完全正常，此時首選治療為長期口服 Class Ic 抗心律不整藥物 Flecainide 合併 Verapamil 以縮短動作電位期間，而乙型受體阻斷劑因會加重病人基準期之竇性心搏過緩而列為絕對禁忌", "(E) 針對曾發生過心跳驟停之先天性 LQTS 患者，單純植入 ICD 即可達成完全防護，不應再併用乙型受體阻斷劑，以免誘發致死性多形性心室頻脈（TdP）"], "answer": 0, "answer_letter": "A", "core_rationale": "經歷過 VF 心跳驟停倖存者具有植入 ICD 次級預防之 Class I 推薦。LQT1 源於 KCNQ1 突變導致慢速鉀電流（IKs）喪失功能，交感興奮時 APD 反常延長易發 TdP/VF，劇烈運動特別是「游泳」為經典特異誘因（> 90% 游泳猝死為 LQT1），必須嚴格禁賽。長效非選擇性 Beta-blocker（Nadolol）在 LQT1 中降低 > 80% 心臟事件（Class I），即使裝了 ICD 亦必須終身服用。LQT2 誘因為聽覺刺激，LQT3 基因突變為 SCN5A 且好發於睡眠休息（用 Mexiletine）。", "option_analysis": "• (A) 正確：心跳驟停倖存者具備 ICD 次級預防 Class I 適應症，合併 Nadolol 與嚴禁競技游泳。\n• (B) 錯誤：SCN5A 獲得功能突變伴隨晚期鈉電流增加且用 Mexiletine 是 LQT3 的特徵（LQT1 為 KCNQ1）。\n• (C) 錯誤：游泳是 LQT1 的特異誘因；鬧鐘與突發聲音驚嚇是 LQT2 的特異誘因。\n• (D) 錯誤：Flecainide 非 LQT1 用藥；Beta-blocker 能降低 80% 猝死風險，是 LQT1 絕對基石。\n• (E) 錯誤：單裝 ICD 不吃 Beta-blocker 會導致反覆放電誘發交感風暴致死，Beta-blocker 必持續服用。", "pearls": ["LQT1 (KCNQ1 / IKs↓)：劇烈運動與「游泳」特異誘發；Broad-based T 波；首選 Nadolol；嚴禁競技游泳。", "LQT2 (KCNH2 / IKr↓)：鬧鐘巨響/聽覺驚嚇/產後誘發；Notched/Bifid T 波；Nadolol + 補鉀/保鉀。", "LQT3 (SCN5A / INa-late↑)：睡眠休息誘發；Late-peaking T 波；標靶藥 Mexiletine。"], "trials": ["2022 ESC Ventricular Arrhythmias Guidelines", "Priori SG et al. HRS/EHRA Consensus"]}, {"id": 16, "date": "2026-10-21", "subspecialty": "Valvular_ACHD", "subspecialty_name": "瓣膜與成人先天性心臟病", "title": "成人先天性心房中隔缺損（Secundum ASD）經導管封堵適應症、邊緣評估與肺血管阻力（PVR）", "stem": "一位 38 歲女性活動性呼吸困難（NYHA II–III）。聽診：第二心音寬且固定性分裂（Fixed split S2），肺動脈瓣區收縮期噴射雜音，胸骨左下緣三尖瓣舒張期雜音。\n• ECG：rSR' 不完全右束支阻滯（IRBBB），電軸顯著右偏（RAD, +115°）。\n• 超音波：右心房與右心室顯著擴大（RV volume overload）；卵圓窩中央型 Secundum ASD（最大徑 24 mm）。周圍邊緣：SVC 7, IVC 8, Posterior 9, AV 7 mm；前上方主動脈邊緣（Aortic rim）僅 2 mm（邊緣缺陷）。\n• 右心導管：mPAP 25, PCWP 10 mmHg; Qp/Qs 2.2; 肺血管阻力 PVR 1.8 Wood Units (< 3 WU)。\n\n針對此病人之解剖分型、導管封堵與 PVR 指引，依據 2020 ESC ACHD 指引何者最為適當？", "options": ["(A) 因超音波顯示前上方主動脈邊緣（Aortic rim）缺陷（< 5 mm），在經導管封堵術中屬絕對禁忌症，此病人必須接受正中胸骨切開開心手術進行外科補片修補", "(B) 此病患為第二孔型心房中隔缺損（Secundum ASD）伴隨右心室容量過負荷且肺血管阻力正常（PVR 1.8 WU < 3 WU），經導管封堵器關閉術（Transcatheter device closure）是指引強烈推薦（Class I）之第一線首選處置，單純主動脈邊緣缺陷並不影響封堵器的成功置入與錨定", "(C) 若此病人的肺血管阻力（PVR）已高達 > 5 Wood Units，且呈現不可逆之重度肺動脈高壓合併以右向左分流為主（艾森曼格症候群 Eisenmenger syndrome），指引建議應緊急施行心房中隔缺損封堵以阻止全身性低血氧惡化", "(D) 在 12 導極心電圖判讀上，額面電軸極度左偏（Superior left axis deviation，-30° 至 -90°）伴隨逆時針方向旋轉，是第二孔型心房中隔缺損（Secundum ASD）之典型標誌，而電軸右偏則常見於第一孔型（Primum ASD）", "(E) 於胸骨左緣第二肋間聽診聞及之收縮期噴射性雜音，其主要病理生理機轉為血液高速衝過心房中隔缺損處本身所產生的直接紊流雜音"], "answer": 1, "answer_letter": "B", "core_rationale": "Secundum ASD 合併右心室容量負荷過重且 PVR < 3 WU，經導管封堵器關閉術為 Class I 首選推薦。在邊緣（Rim）評估中，周邊組織邊緣需 ≥ 5 mm，但前上方主動脈邊緣（Aortic rim）為唯一例外，高達 40–50% 病人主動脈邊緣不足，封堵器可安全跨騎主動脈根部，非禁忌。PVR ≥ 5 WU 且右向左分流（Eisenmenger 症候群）絕對禁止關閉缺損（Class III 危害），以免誘發致命右心衰竭。Secundum ASD 電軸右偏，Primum ASD 電軸極度左偏。肺動脈雜音源於跨肺動脈瓣之功能性血流量過大。", "option_analysis": "• (A) 錯誤：單純 Aortic rim 缺陷極常見，封堵器可安全錨定於主動脈根部，非導管封堵禁忌症。\n• (B) 正確：Secundum ASD 伴隨 RV 擴大且 PVR 1.8 WU（< 3），經導管封堵器為 Class I 首選。\n• (C) 錯誤：艾森曼格症候群關閉缺損會摧毀右心洩壓閥引發致死性急性右心衰竭，屬絕對禁忌（Class III）。\n• (D) 錯誤：電軸右偏是 Secundum ASD 特徵；電軸極度左偏（Superior LAD）是 Primum ASD 特徵。\n• (E) 錯誤：ASD 缺損本身無雜音；雜音是龐大血流衝過「肺動脈瓣」的功能性血流噴射雜音。", "pearls": ["Secundum ASD 經導管封堵：周圍邊緣需 ≥ 5 mm，唯一容許 Aortic rim < 5 mm！", "PVR 分水嶺：PVR < 3 WU (Class I 關閉)；PVR ≥ 5 WU 伴右向左分流 (Eisenmenger, Class III 絕對禁忌)。", "ECG 電軸定位：Secundum ASD 呈電軸右偏 (RAD)；Primum ASD 呈極度左偏 (Superior LAD)。"], "trials": ["2020 ESC ACHD Guidelines", "2018 AHA/ACC ACHD Guidelines"]}, {"id": 17, "date": "2026-10-22", "subspecialty": "Imaging_ICU", "subspecialty_name": "心血管影像與重症血流動力學", "title": "心血管磁振造影（CMR）延遲顯影（LGE）於心肌類肉瘤病之診斷與猝死去顫器（ICD）指引", "stem": "一位 48 歲男性反覆運動頭暈、心悸 2 個月。3 年前健檢發現兩側肺門淋巴結腫大。冠狀動脈攝影完全正常。\n• ECG：竇性 P 波 80 bpm，心室接界性跳脫心律 48 bpm（QRS 92 ms），確診為第三度完全性房室傳導阻滯（Complete AV block）。\n• 超音波：LVEF 44%，基底段心室中隔局部變薄（6 mm）且 hypokinesia。\n• CMR：T2 mapping 顯示基底中隔水腫；LGE 呈現多發性中層心肌（Mid-wall）與心外膜下層顯影，集中於「基底段心中隔（Basal septum）」及「下外側壁」，跨越單一冠脈領域。\n• ¹⁸F-FDG PET/CT：基底中隔與側壁見局灶性異常葡萄糖高代謝攝取，縱隔與肺門淋巴結代謝旺盛。\n\n針對此病人之診斷、機轉與治療，依據 HRS 及 ESC 指引何者最為適當？", "options": ["(A) CMR 延遲顯影若呈現心內膜下（Subendocardial）分佈且局限於左前降支領域，為典型心肌梗塞後疤痕；本病患第一線處置應給予 Aspirin 併用 Ticagrelor 雙重抗血小板藥物治療", "(B) 50 歲以下發生不明原因高度房室傳導阻滯，合併 CMR 基底段心中隔多發性中層/心外膜下 LGE 以及 PET/CT 局灶性 ¹⁸F-FDG 活躍攝取，確立診斷為「心肌類肉瘤病（Cardiac Sarcoidosis, CS）」；應立即啟動全身性皮質類固醇免疫抑制治療，且具備植入式心臟去顫器（ICD）之強烈適應症", "(C) 在疑似急性心肌炎或心臟類肉瘤病患者中，若 CMR 之 T2 mapping 正常且無 LGE，即可百分之百完全排除活動性心肌發炎之可能性，此時嚴禁使用任何免疫抑制劑", "(D) 於 CMR 影像判讀中，瀰漫性心內膜下非冠脈分佈之 LGE（Diffuse subendocardial LGE）伴隨心肌與血池反轉時間訊號異常反轉（Abnormal blood pool nulling），為心肌類肉瘤病之病理特異性特徵", "(E) 針對心肌類肉瘤病合併完全房室傳導阻滯患者，單純植入傳統雙腔心臟節律器（PPM）即可提供完全防護；因類固醇治療可在 2 週內徹底治癒肉芽腫，植入式心臟去顫器（ICD）列為手術禁忌"], "answer": 1, "answer_letter": "B", "core_rationale": "中年（< 60 歲）不明原因高度 AV block 合併肺門淋巴結腫大，CMR 見基底中隔中層/心外膜 LGE 且 PET 見局灶 FDG 高代謝，確立心肌類肉瘤病（Cardiac Sarcoidosis）。第一線給予全身類固醇抑制發炎。類肉瘤病合併高度 AV block 或顯著 LGE 者猝死率極高，指引強烈推薦植入 ICD（Class IIa / Class I），絕不能僅裝一般 PPM。瀰漫性心內膜下 LGE 伴異常血池反轉是心臟類澱粉沉積症（Amyloidosis）特徵。", "option_analysis": "• (A) 錯誤：心內膜下吻合單一血管為心梗特徵；本患為非缺血性中層/心外膜顯影且冠脈造影正常。\n• (B) 正確：中年不明原因完全 AV block + 基底中隔 LGE + PET 局灶攝取確立類肉瘤病，需類固醇與 ICD。\n• (C) 錯誤：早期或微小發炎 CMR 可能陰性，PET 對偵測早期活動性肉芽腫發炎敏感度更高。\n• (D) 錯誤：瀰漫心內膜下非冠脈 LGE 伴血池反轉異常是心臟類澱粉沉積症（Cardiac Amyloidosis）特徵。\n• (E) 錯誤：類肉瘤病纖維疤痕為 VT/VF 猝死溫床，需起搏者指引強烈推薦直升 ICD（Class IIa），單裝 PPM 不足。", "pearls": ["心肌類肉瘤病三聯徵：中年 (< 60 歲) 不明原因高度 AV block、肺門淋巴結腫大、基底中隔 LGE / PET 局灶攝取。", "猝死防護：類肉瘤病合併高度 AV block 或廣泛 LGE 者，必須植入 ICD（非單純 PPM）！", "CMR LGE 鑑別：心梗 (心內膜下吻合冠脈)；心肌炎 (下外側壁心外膜下)；類澱粉 (全心內膜下伴血池異常)。"], "trials": ["HRS Cardiac Sarcoidosis Consensus (2014)", "2022 ESC Ventricular Arrhythmias Guidelines"]}, {"id": 18, "date": "2026-10-23", "subspecialty": "Hypertension_Lipid", "subspecialty_name": "高血壓與血脂預防醫學", "title": "家族性高膽固醇血症（FH）之 DLCN 評分、肌腱黃色瘤、治療目標與 ANGPTL3 抑制劑 Evinacumab", "stem": "一位 34 歲男性接受心血管危險評估。父親 42 歲心梗猝死，叔叔 45 歲 CABG，8 歲女兒膽固醇偏高。\n• 理學檢查：雙眼角膜老年環（Arcus senilis）；雙側跟腱及手背伸肌腱見堅硬無痛結節（肌腱黃色瘤 Tendon xanthomas）。\n• 檢驗（未服藥）：TC 410, LDL-C 328 mg/dL (> 8.5 mmol/L), HDL-C 46, TG 180 mg/dL。肝腎與甲狀腺正常。\n• 電腦斷層鈣化積分：CAC 185 AU（已有亞臨床硬化）。\n• DLCN 評分：家族史 1 + 肌腱黃色瘤 6 + LDL-C 8 = 15 分（> 8 分，確診 Definite FH）。\n• 基因檢測：證實 LDLR 雜合突變，確診為異型合子家族性高膽固醇血症（HeFH）。\n\n針對此病人之危險分層、降脂目標與新藥實證，依據指引何者最為適當？", "options": ["(A) 依據荷蘭脂質診所網絡標準（DLCNC），總評分 15 分僅能歸類為「可能家族性高膽固醇血症（Possible FH）」；指引要求必須先施行侵入性心導管檢查證實冠脈狹窄 > 50%，方可確立 FH 之診斷", "(B) 此病患為異型合子家族性高膽固醇血症（HeFH）且合併亞臨床動脈硬化（CAC 185 AU），依據指引屬極高風險（Very High Risk），其 LDL-C 治療目標為 < 55 mg/dL 且較基線值下降至少 50% 以上；第一線應立即啟動高強度他汀（High-intensity Statin）合併 Ezetimibe，若未達標應儘早合併使用 PCSK9 抑制劑（如 Evolocumab、Alirocumab 或 Inclisiran）", "(C) 肌腱黃色瘤（Tendon xanthomas，尤其是跟腱增厚）為非特異性表徵，主要好發於嚴重高三酸甘油酯血症；而臀部與背部之發疹性黃色瘤（Eruptive xanthomas）才是重度高膽固醇血症之病理特異性指標", "(D) 針對雙等位基因完全缺失（Null/Null）之最重型同型合子家族性高膽固醇血症（HoFH）患者，新型血管生成素樣蛋白 3 單株抗體 Evinacumab 完全無效，因其降膽固醇機轉百分之百依賴肝細胞表面正常 LDL 受體之存在與表現", "(E) 針對確診異型合子家族性高膽固醇血症患者之一等親家族成員（如其 8 歲女兒），指引強烈建議應嚴格延遲至年滿 18 歲成年後方能啟動級聯篩檢（Cascade screening），以免過早給予降血脂藥物干擾生長發育"], "answer": 1, "answer_letter": "B", "core_rationale": "DLCN 評分 > 8 分即確立診斷（Definite FH，本例 15 分）。HeFH 合併 CAC 185 AU 屬極高風險，2022 TSOC 血脂目標為 LDL-C < 55 mg/dL 且降幅 ≥ 50%，需高強度他汀 + Ezetimibe + PCSK9 抑制劑三聯治療。肌腱黃色瘤是重度高膽固醇血症特異標記；臀部發疹性黃色瘤是嚴重高 TG（乳糜微粒血症）特徵。Evinacumab 阻斷 ANGPTL3，機轉完全獨立於 LDL 受體（LDLR-independent），在 Null/Null HoFH 依然能強效降 LDL-C 49%（ELIPSE-HoFH 試驗）。一等親級聯篩檢自 5 歲起即可啟動，8–10 歲即可開始 Statin 治療。", "option_analysis": "• (A) 錯誤：DLCN > 8 分即為 Definite FH；心導管狹窄不是 DLCN 診斷條件。\n• (B) 正確：HeFH 合併 CAC 陽性屬極高風險，目標為 < 55 mg/dL 且降幅 ≥ 50%，需儘早啟動三聯強效治療。\n• (C) 錯誤：肌腱黃色瘤是重度「高膽固醇（FH）」特徵；臀部發疹性黃色瘤是「高 TG (乳糜微粒)」特徵。\n• (D) 錯誤：Evinacumab 降脂機轉完全獨立於 LDL 受體，對 Null/Null HoFH 依然顯著降低 49% LDL-C。\n• (E) 錯誤：級聯篩檢自 5 歲起即可啟動，8–10 歲即可開始藥物治療以截斷累積硬化負擔，不可拖至 18 歲。", "pearls": ["DLCN 確診門檻：總分 > 8 分為 Definite FH；肌腱黃色瘤獨拿 6 分；LDL-C ≥ 325 mg/dL 拿 8 分。", "極高風險目標：LDL-C < 55 mg/dL 且降幅 ≥ 50%（TSOC 2022）。", "Evinacumab (ANGPTL3 單株抗體)：完全不依賴 LDL 受體！對 Null/Null HoFH 降 LDL-C 49% (ELIPSE-HoFH)。", "黃色瘤鑑別：跟腱黃色瘤 → 高膽固醇 (FH)；發疹性黃色瘤 → 高三酸甘油酯 (> 1000 mg/dL)。"], "trials": ["ELIPSE-HoFH (NEJM 2020)", "2022 TSOC Lipid Guidelines", "2019 ESC/EAS Dyslipidemia Guidelines"]}];
+
+let state = {
+  currentFilter: 'ALL',
+  currentMode: 'all',
+  searchQuery: '',
+  userAnswers: JSON.parse(localStorage.getItem('tsoc_user_answers') || '{}'),
+  bookmarks: JSON.parse(localStorage.getItem('tsoc_bookmarks') || '[]'),
+};
+
+const subspecialtyMap = {
+  'ALL': '全部次專科',
+  'CAD_PCI': '冠心病與介入治療 (CAD/PCI)',
+  'HF_CMP': '心臟衰竭與心肌病變 (HF/CMP)',
+  'EP': '心律不整與電生理 (EP)',
+  'Valvular_ACHD': '瓣膜與成人先心病 (Valvular/ACHD)',
+  'Imaging_ICU': '影像與重症血流動力學 (Imaging/ICU)',
+  'Hypertension_Lipid': '高血壓與血脂預防醫學'
+};
+
+function init() {
+  checkAuth();
+  renderFilters();
+  renderQuestions();
+  updateStats();
+}
+
+function saveState() {
+  localStorage.setItem('tsoc_user_answers', JSON.stringify(state.userAnswers));
+  localStorage.setItem('tsoc_bookmarks', JSON.stringify(state.bookmarks));
+  updateStats();
+}
+
+function updateStats() {
+  const total = rawQuestions.length;
+  const answeredKeys = Object.keys(state.userAnswers);
+  const answeredCount = answeredKeys.length;
+  
+  let correctCount = 0;
+  let wrongCount = 0;
+  answeredKeys.forEach(id => {
+    const q = rawQuestions.find(item => item.id == id);
+    if (q) {
+      if (state.userAnswers[id] === q.answer) correctCount++;
+      else wrongCount++;
+    }
+  });
+
+  const accuracy = answeredCount > 0 ? Math.round((correctCount / answeredCount) * 100) : 0;
+
+  document.getElementById('statTotal').innerText = total + ' 題';
+  document.getElementById('statAnswered').innerText = answeredCount + ' 題';
+  document.getElementById('statAccuracy').innerText = accuracy + '%';
+  document.getElementById('statBookmarked').innerText = state.bookmarks.length + ' 題';
+  document.getElementById('statWrong').innerText = wrongCount + ' 題';
+}
+
+function renderFilters() {
+  const container = document.getElementById('subspecialtyFilters');
+  container.innerHTML = '';
+
+  const counts = { 'ALL': rawQuestions.length };
+  rawQuestions.forEach(q => {
+    counts[q.subspecialty] = (counts[q.subspecialty] || 0) + 1;
+  });
+
+  Object.keys(subspecialtyMap).forEach(key => {
+    const btn = document.createElement('button');
+    btn.className = `filter-btn ${state.currentFilter === key ? 'active' : ''}`;
+    btn.onclick = () => {
+      state.currentFilter = key;
+      renderFilters();
+      renderQuestions();
+    };
+    btn.innerHTML = `<span>${subspecialtyMap[key]}</span><span class="count-pill">${counts[key] || 0}</span>`;
+    container.appendChild(btn);
+  });
+}
+
+function setMode(mode) {
+  state.currentMode = mode;
+  document.querySelectorAll('.btn-mode').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  renderQuestions();
+}
+
+function handleSearch() {
+  state.searchQuery = document.getElementById('searchInput').value.trim().toLowerCase();
+  renderQuestions();
+}
+
+function toggleBookmark(id) {
+  if (state.bookmarks.includes(id)) {
+    state.bookmarks = state.bookmarks.filter(x => x !== id);
+  } else {
+    state.bookmarks.push(id);
+  }
+  saveState();
+  renderQuestions();
+}
+
+function selectOption(qId, optIdx) {
+  if (state.userAnswers[qId] !== undefined) return;
+  const card = document.getElementById(`q-card-${qId}`);
+  card.querySelectorAll('.option-item').forEach((item, idx) => {
+    item.classList.toggle('selected', idx === optIdx);
+    item.querySelector('input').checked = (idx === optIdx);
+  });
+  const submitBtn = document.getElementById(`btn-submit-${qId}`);
+  if (submitBtn) submitBtn.disabled = false;
+}
+
+function submitAnswer(qId) {
+  const q = rawQuestions.find(item => item.id === qId);
+  if (!q) return;
+
+  const card = document.getElementById(`q-card-${qId}`);
+  const selected = card.querySelector('.option-item.selected');
+  if (!selected) return;
+
+  const chosenIdx = parseInt(selected.getAttribute('data-idx'));
+  state.userAnswers[qId] = chosenIdx;
+  saveState();
+
+  applyAnswerState(q, card, chosenIdx);
+}
+
+function applyAnswerState(q, card, chosenIdx) {
+  const isCorrect = (chosenIdx === q.answer);
+  const options = card.querySelectorAll('.option-item');
+  
+  options.forEach((opt, idx) => {
+    opt.classList.add('locked');
+    if (idx === q.answer) {
+      opt.classList.add('correct');
+    } else if (idx === chosenIdx && !isCorrect) {
+      opt.classList.add('wrong');
+    }
+  });
+
+  const banner = card.querySelector('.feedback-banner');
+  banner.className = `feedback-banner show ${isCorrect ? 'feedback-success' : 'feedback-danger'}`;
+  banner.innerHTML = isCorrect ? 
+    `<span>🎉 答對了！恭喜精準掌握此題核心概念！正確答案為 (${q.answer_letter})</span>` :
+    `<span>❌ 答錯了！此題正確答案為 (${q.answer_letter})，請參閱下方詳細機轉與誘答剖析。</span>`;
+
+  const expBox = card.querySelector('.explanation-box');
+  expBox.classList.add('show');
+
+  const submitBtn = card.querySelector('.btn-submit');
+  if (submitBtn) submitBtn.style.display = 'none';
+
+  const toggleBtn = card.querySelector('.btn-toggle-exp');
+  if (toggleBtn) toggleBtn.innerText = '隱藏解析';
+}
+
+function toggleExplanation(qId) {
+  const expBox = document.getElementById(`exp-box-${qId}`);
+  const btn = document.getElementById(`btn-toggle-${qId}`);
+  if (expBox.classList.contains('show')) {
+    expBox.classList.remove('show');
+    btn.innerText = '查看完整詳解';
+  } else {
+    expBox.classList.add('show');
+    btn.innerText = '隱藏解析';
+  }
+}
+
+function resetAllProgress() {
+  if (confirm('確定要清空所有作答紀錄與進度嗎？（此動作無法復原）')) {
+    state.userAnswers = {};
+    saveState();
+    renderQuestions();
+  }
+}
+
+function filterQuestions() {
+  return rawQuestions.filter(q => {
+    if (state.currentFilter !== 'ALL' && q.subspecialty !== state.currentFilter) return false;
+    if (state.searchQuery) {
+      const qStr = (q.title + ' ' + q.stem + ' ' + q.core_rationale + ' ' + (q.trials || []).join(' ')).toLowerCase();
+      if (!qStr.includes(state.searchQuery)) return false;
+    }
+    if (state.currentMode === 'bookmarked') {
+      return state.bookmarks.includes(q.id);
+    }
+    if (state.currentMode === 'wrong') {
+      return (state.userAnswers[q.id] !== undefined && state.userAnswers[q.id] !== q.answer);
+    }
+    return true;
+  });
+}
+
+function renderQuestions() {
+  const container = document.getElementById('quizContainer');
+  let list = filterQuestions();
+
+  if (state.currentMode === 'random') {
+    list = [...list].sort(() => Math.random() - 0.5);
+  }
+
+  if (list.length === 0) {
+    container.innerHTML = `
+      <div class="panel" style="text-align:center; padding:50px 20px;">
+        <p style="font-size:36px; margin-bottom:12px;">🫀</p>
+        <h3 style="font-size:18px; color:#1e293b; margin-bottom:8px;">未找到符合條件的考題</h3>
+        <p style="font-size:14px; color:#64748b;">請嘗試更換次專科類別、清除搜尋關鍵字，或切換至全題庫模式。</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = list.map(q => {
+    const isBookmarked = state.bookmarks.includes(q.id);
+    const userAnswer = state.userAnswers[q.id];
+    const isAnswered = (userAnswer !== undefined);
+
+    const optionsHtml = q.options.map((opt, idx) => {
+      let optClass = 'option-item';
+      if (isAnswered) {
+        optClass += ' locked';
+        if (idx === q.answer) optClass += ' correct';
+        else if (idx === userAnswer) optClass += ' wrong';
+      }
+      return `
+        <div class="${optClass}" data-idx="${idx}" onclick="selectOption(${q.id}, ${idx})">
+          <input type="radio" name="q_${q.id}" class="option-radio" ${userAnswer === idx ? 'checked' : ''} ${isAnswered ? 'disabled' : ''}>
+          <span>${opt}</span>
+        </div>
+      `;
+    }).join('');
+
+    const trialsHtml = (q.trials || []).map(t => `<span class="trial-pill">📄 ${t}</span>`).join('');
+    const pearlsHtml = (q.pearls || []).map(p => `<li>${p}</li>`).join('');
+
+    return `
+      <article class="question-card" id="q-card-${q.id}">
+        <div class="q-header">
+          <div class="q-meta">
+            <span class="q-num">第 ${q.id} 題</span>
+            <span class="q-tag tag-${q.subspecialty}">${q.subspecialty_name}</span>
+            <span class="q-date">📅 ${q.date}</span>
+          </div>
+          <button class="bookmark-btn ${isBookmarked ? 'bookmarked' : ''}" onclick="toggleBookmark(${q.id})" title="收藏標記此題">
+            ${isBookmarked ? '★' : '☆'}
+          </button>
+        </div>
+
+        <h2 class="q-title">${q.title}</h2>
+        <div class="q-stem">${q.stem}</div>
+
+        <div class="options-list">
+          ${optionsHtml}
+        </div>
+
+        <div class="feedback-banner ${isAnswered ? 'show ' + (userAnswer === q.answer ? 'feedback-success' : 'feedback-danger') : ''}">
+          ${isAnswered ? (userAnswer === q.answer ? 
+            `<span>🎉 答對了！恭喜精準掌握此題核心概念！正確答案為 (${q.answer_letter})</span>` :
+            `<span>❌ 答錯了！此題正確答案為 (${q.answer_letter})，請參閱下方詳細機轉與誘答剖析。</span>`) : ''}
+        </div>
+
+        <div class="card-actions">
+          <div>
+            ${!isAnswered ? `
+              <button class="btn btn-submit" id="btn-submit-${q.id}" onclick="submitAnswer(${q.id})" disabled>
+                ✓ 提交答案
+              </button>
+            ` : ''}
+            <button class="btn btn-toggle-exp" id="btn-toggle-${q.id}" onclick="toggleExplanation(${q.id})">
+              ${isAnswered ? '隱藏解析' : '查看完整詳解'}
+            </button>
+          </div>
+          <span style="font-size:12px; color:#94a3b8;">TSOC 甄審必考實證題型</span>
+        </div>
+
+        <div class="explanation-box ${isAnswered ? 'show' : ''}" id="exp-box-${q.id}">
+          <div class="exp-sec">
+            <div class="exp-title">🎯 正確答案與核心機轉剖析</div>
+            <div class="exp-content"><strong>【公佈答案】(${q.answer_letter})</strong>
+
+${q.core_rationale}</div>
+          </div>
+
+          <div class="exp-sec">
+            <div class="exp-title">🔍 誘答選項逐一剖析</div>
+            <div class="exp-content">${q.option_analysis}</div>
+          </div>
+
+          <div class="pearls-card">
+            <div style="font-weight:800; font-size:13px; color:#1e40af; margin-bottom:6px; display:flex; align-items:center; gap:6px;">
+              💡 心專高頻考點精粹 (High-Yield Pearls)
+            </div>
+            <ul>${pearlsHtml}</ul>
+          </div>
+
+          ${trialsHtml ? `
+            <div style="margin-top:14px;">
+              <span style="font-size:11px; font-weight:700; color:#64748b; text-transform:uppercase;">權威文獻與臨床試驗出處</span>
+              <div class="trials-tags">${trialsHtml}</div>
+            </div>
+          ` : ''}
+        </div>
+      </article>
+    `;
+  }).join('');
+}
+
+window.onload = init;
+</script>
+</body>
+</html>
