@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TSOC 心臟血管內科專科醫師甄審 · 每日擬真題庫互動系統</title>
+  <title>TSOC 心專精銳題庫 · 每日實證擬真測驗系統</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -704,12 +704,12 @@
 </head>
 <body>
 
-<!-- Lock Screen Overlay -->
+<!-- Lock Screen Overlay (Anonymous & Private) -->
 <div id="lockScreen">
   <div class="lock-card">
     <div class="lock-icon-wrap">🔒</div>
     <h2 class="lock-title">TSOC 心專精銳題庫</h2>
-    <p class="lock-subtitle">Dr. Po-Sheng Lee (李博生醫師) 專用私人實證題庫</p>
+    <p class="lock-subtitle">心臟血管內科專科醫師甄審 · 臨床實證題庫系統</p>
     
     <div class="input-group">
       <label class="input-label" for="passwordInput">請輸入專屬訪問密碼：</label>
@@ -726,11 +726,6 @@
 
     <button type="button" class="btn-unlock" onclick="verifyPassword()">解鎖並進入題庫</button>
     <div id="lockError" class="lock-error">⚠️ 密碼不正確，請重新輸入</div>
-
-    <div class="lock-hint">
-      💡 <strong>安全提示</strong>：預設密碼為 <code>cardio2026</code>。<br>
-      登入後可於右上角隨時自訂為您的個人專屬密碼。
-    </div>
   </div>
 </div>
 
@@ -768,7 +763,7 @@
         <div class="brand-icon">🫀</div>
         <div class="brand-text">
           <h1>TSOC 心專精銳題庫 · 每日實證擬真測驗</h1>
-          <p>Dr. Po-Sheng Lee (李博生醫師) 專用臨床複習與甄審訓練系統</p>
+          <p>心臟血管內科專科醫師甄審精銳考題與深度實證解析系統</p>
         </div>
       </div>
       <div class="header-controls">
@@ -846,7 +841,7 @@
 
 <script>
 // SHA-256 for default 'cardio2026'
-const DEFAULT_HASH = "8a156f46e7b4fdb7f671c4368bfc4a4cb26afedf7d91ca85d4eb912a9aa884f3";
+const DEFAULT_HASH = '8a156f46e7b4fdb7f671c4368bfc4a4cb26afedf7d91ca85d4eb912a9aa884f3';
 
 async function sha256(str) {
   const buf = new TextEncoder().encode(str);
