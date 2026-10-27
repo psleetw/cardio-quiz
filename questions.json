@@ -510,5 +510,121 @@
       "2022 TSOC Lipid Guidelines",
       "2019 ESC/EAS Dyslipidemia Guidelines"
     ]
+  },
+  {
+    "id": 19,
+    "date": "2026-10-24",
+    "subspecialty": "HF_CMP",
+    "subspecialty_name": "心臟衰竭與心肌病變",
+    "title": "擴張型心肌病變（DCM）之高危致心律不整基因（LMNA）、DANISH 試驗與初級預防 ICD 指引",
+    "stem": "一位 39 歲男性因陣發性心悸與運動時輕微頭暈 2 個月就醫。父親 45 歲裝節律器，49 歲睡夢中猝死。\n• 理學檢查：血壓 118/74 mmHg、心跳 64 bpm，心肺聽診正常，NYHA I–II。\n• ECG：竇性心律，PR 間期 248 ms（第一度 AV block），不完全性左束支阻滯（QRS 116 ms）。\n• 24 小時 Holter：頻發 PVCs (8%)、4 段 NSVT（最長 9 跳，心率 180 bpm），偶見 Mobitz type II 第二度房室傳導阻滯。\n• 心臟超音波：LVEDD 57 mm，LVEF 44%（輕度收縮下降），右室正常。\n• CMR：LVEF 43%，基底至中段心中隔見明顯中層心肌線狀延遲顯影（Mid-wall septal striae LGE）。冠脈電腦斷層造影正常。\n• 基因檢測：證實帶有核纖層蛋白基因（LMNA gene）之致病性截斷突變（Truncating mutation）。\n\n針對此病人之分子機轉、猝死風險分層與 ICD 決策，依據 2023 ESC 心肌病變指引何者最為適當？",
+    "options": [
+      "(A) 依據 DANISH 隨機對照試驗結果，所有非缺血性擴張型心肌病變患者植入 ICD 均無法降低心因性猝死率；且本病患 LVEF 為 44%（> 35%），因此絕對無植入 ICD 之適應症",
+      "(B) 患者帶有高致心律不整風險之 LMNA 截斷突變，合併男性、NSVT、房室傳導阻滯及 LVEF < 50%，其 5 年致命性室性心律不整風險極高；即使 LVEF 尚未降至 ≤ 35%，指引仍建議植入 ICD 作為心因性猝死初級預防（Class IIa 推薦）",
+      "(C) 肌聯蛋白基因（TTN）截斷突變是家族性擴張型心肌病變最少見的基因突變（佔比 < 1%），但一旦出現即必定伴隨早發性房室傳導阻滯，且對標準心衰竭藥物治療（GDMT）完全無左心室逆重塑反應",
+      "(D) 本病患心電圖與 Holter 已出現莫氏第二型房室傳導阻滯，為避免過度醫療與除顫線圈併發症，第一線處置應單純植入傳統雙腔型永久性心臟節律器（PPM），無須具備去顫（ICD）功能",
+      "(E) 2023 ESC 心肌病變指引新定義之「非擴張型左心室心肌病變（NDLVC）」規定左心室必須同時具備重度腔室擴大（LVEDD > 65 mm）與廣泛心內膜下缺血性疤痕方可診斷"
+    ],
+    "answer": 1,
+    "answer_letter": "B",
+    "core_rationale": "2023 ESC 心肌病變指引確立高危基因型（LMNA, FLNC, PLN, DSP, RBM20）在 LVEF 仍 > 35% 時即可能發生致命心律不整猝死。LMNA 心肌病變帶有非錯義突變、男性、AV block、NSVT 及 LVEF < 50% 屬極高危險群（5 年風險 ≥ 10%），指引給予 Class IIa ICD 初級預防推薦。DANISH (NEJM 2016) 證實 ICD 可降低 50% 心因性猝死。LMNA 患者具起搏需求時，必須直接植入具去顫功能之 ICD，嚴禁單純裝 PPM。TTN 截斷突變為最常見基因型（15–25%），GDMT 逆重塑反應極佳。",
+    "option_analysis": "• (A) 錯誤：DANISH 證實 ICD 降低 50% 猝死；LMNA 高危基因即使 LVEF > 35% 仍具明確 ICD 適應症。\n• (B) 正確：符合 2023 ESC 指引與 LMNA 風險預測模型之 Class IIa 初級預防 ICD 建議。\n• (C) 錯誤：TTN 突變最為常見（15–25%），且對 GDMT 逆重塑反應極佳，無早期 AV block。\n• (D) 錯誤：LMNA 患者具起搏需求時必須直接植入 ICD（或 CRT-D），單裝 PPM 猝死風險極高。\n• (E) 錯誤：NDLVC 之定義為左室無腔室擴大（Non-dilated LV），但存在非缺血性疤痕（環狀 LGE）或孤立收縮力下降。",
+    "pearls": [
+      "高危心律不整基因型：LMNA, FLNC, PLN, DSP, RBM20 → 突破 LVEF ≤ 35% 限制！",
+      "LMNA 臨床三部曲：早發 AV block/AF → 頻繁 VT/VF → 晚期收縮衰竭；需起搏時必裝 ICD！",
+      "DANISH 試驗 (NEJM 2016)：非缺血性心衰竭中，ICD 顯著降低 50% 心因性猝死。"
+    ],
+    "trials": [
+      "2023 ESC Cardiomyopathy Guidelines (EHJ 2023)",
+      "DANISH Trial (NEJM 2016)",
+      "LMNA Risk Score (Circulation 2019)"
+    ]
+  },
+  {
+    "id": 20,
+    "date": "2026-10-25",
+    "subspecialty": "CAD_PCI",
+    "subspecialty_name": "冠心病與介入治療",
+    "title": "冠狀動脈重度鈣化病變之斑塊修飾技術（IVL vs. 旋磨切除術）與 Fujino OCT 評分（Disrupt CAD III）",
+    "stem": "一位 72 歲男性藥物難治性心絞痛（CCS III）接受心導管檢查。造影見 Mid-LAD 85% 重度狹窄伴雙軌狀重度鈣化。\n• 術前 OCT 評估：最大鈣化弧度 270°（> 180°）、最大厚度 0.85 mm（> 0.5 mm）、長度 12 mm（> 5 mm），計算 Fujino OCT 鈣化評分為 4 分（最高危險分層）。\n• 介入過程：2.5 mm NC 氣球加壓至 18 atm 出現明顯狗骨頭切跡凹陷，殘餘狹窄 > 30%，證實為堅硬不屈之重度鈣化環。\n\n針對此病人之斑塊修飾策略、機轉與試驗，依據指引何者最為適當？",
+    "options": [
+      "(A) 此病灶之 Fujino OCT 鈣化評分為 4 分；依據臨床研究，評分 4 分代表支架擴張不良（Stent underexpansion）之發生率極低（< 5%），不需進一步斑塊修飾即可直接置入塗藥支架（DES）",
+      "(B) 血管內震波碎石術（Intravascular Lithotripsy, IVL / Shockwave）利用氣球內局部脈衝聲壓力波，能在保留正常軟組織與血管結構的前提下，同時在淺層與深層鈣化斑塊中誘發多向性微骨折（Microfractures）；指標性 Disrupt CAD III 試驗證實其在重度鈣化病變中具備極高之手術成功率與優異之支架擴張度",
+      "(C) 冠狀動脈旋磨切除術（Rotational Atherectomy, RA / Rotablator）利用鑽石鍍膜磨頭高速旋轉，其原理為專一性切削並清除深層血管中膜（Deep medial）鈣化，而對管腔表面的淺層鈣化則完全無研磨作用",
+      "(D) 若此鈣化病灶極端嚴重狹窄，導致直徑最小的 1.0 mm 氣球或微導管均無法跨越病灶（Uncrossable lesion），此時血管內震波碎石術（IVL）為第一線唯一首選工具，因 IVL 導管具備所有斑塊修飾器材中最小的通過外徑",
+      "(E) 於血管內影像評估中，OCT 測得鈣化厚度 < 0.2 mm 且鈣化弧度 < 90°，在各大臨床指引中均被列為必須常規施行機械旋磨修飾之絕對適應症"
+    ],
+    "answer": 1,
+    "answer_letter": "B",
+    "core_rationale": "Fujino OCT 鈣化評分（弧度 > 180° 得 2 分、厚度 > 0.5 mm 得 1 分、長度 > 5 mm 得 1 分）：4 分代表支架擴張不良風險高達 78%，必做進階斑塊修飾。IVL（Shockwave）發射局部 50 atm 等效聲壓力波，穿透軟組織並專一性使淺層與深層中膜鈣化產生微骨折，Disrupt CAD III (JACC 2020) 證實手術成功率 92.4%、支架擴張度 102% 且穿孔夾層率極低。旋磨切除術（RA）基於差異切削僅研磨淺層鈣化。IVL 氣球外徑較大，在氣球無法通過之病灶（Uncrossable lesion）禁用，此時開路先鋒首選為使用小磨頭（1.25 mm）之旋磨術（可接續 Rota-Tripsy 複合治療）。",
+    "option_analysis": "• (A) 錯誤：Fujino 評分 4 分為支架擴張不良極高危險群（接近 80%），嚴禁直接打支架。\n• (B) 正確：IVL 雙層碎鈣機轉且 Disrupt CAD III 證實優異之支架擴張與高安全性。\n• (C) 錯誤：旋磨術僅能研磨「淺層鈣化」，完全無法破壞深層中膜鈣化。\n• (D) 錯誤：IVL 氣球外徑較粗，在氣球無法通過病灶（Uncrossable）無法使用；開路首選小磨頭旋磨術（RA）。\n• (E) 錯誤：薄鈣化與小弧度不阻礙支架展開，不需旋磨修飾。",
+    "pearls": [
+      "Fujino OCT 鈣化評分：弧度 > 180° (2分)、厚度 > 0.5 mm (1分)、長度 > 5 mm (1分)；總分 4 分必做斑塊修飾！",
+      "IVL (Shockwave)：聲壓力波穿透軟組織，同時粉碎淺層與深層中膜鈣化 (Disrupt CAD III)。",
+      "無法通過病灶 (Uncrossable lesion)：IVL 進不去！首選小磨頭旋磨切除術 (RA) 開路 (Rota-Tripsy 策略)。"
+    ],
+    "trials": [
+      "Fujino A et al. OCT Calcium Score (EuroIntervention 2018)",
+      "Disrupt CAD III (JACC 2020)",
+      "PREPARE-CALC (EuroIntervention 2024)"
+    ]
+  },
+  {
+    "id": 21,
+    "date": "2026-10-26",
+    "subspecialty": "EP",
+    "subspecialty_name": "心律不整與電生理",
+    "title": "陣發性心室上心搏過速（PSVT）之電生理檢查（EPS）鑑別診斷（His-Refractory PVC 與 VOP V-A-V 反應）",
+    "stem": "一位 28 歲女性反覆發作陣發性窄 QRS 心搏過速（PSVT）接受 EPS 檢查。心房刺激誘發持續性心搏過速（TCL 330 ms，心率 182 bpm）。\n• 心內電圖：向心性心房激動序列（最早逆傳 A 在 His-A 與 CS 9-10）；VA 間期為 85 ms。\n• 心室超速起搏（VOP）：週期 310 ms 夾帶心房，起搏停止後呈現 V-A-V 激動序列；測得 PPI - TCL = 80 ms（< 115 ms），SA - VA = 65 ms（< 85 ms）。\n• 希氏束不反應期心室刺激（His-Refractory PVC）：精準於希氏束處於絕對不反應期給予單發心室刺激，成功使心房波提前激動達 35 ms（Pre-excitation of atrium），逆傳序列不變且心律持續。\n\n針對此病人之電生理機轉、確切診斷與消融標靶，依據 2019 ESC SVT 指引何者最為適當？",
+    "options": [
+      "(A) 希氏束不反應期心室期外刺激（His-Refractory PVC）能提早激動心房，百分之百證實存在房室結外的副傳導路徑（Accessory Pathway, AP）參與折返環路；結合 PPI - TCL < 115 ms 與 V-A-V 序列，可確診為經隱性中隔副傳導路徑之順向型房室折返性心搏過速（Orthodromic AVRT）",
+      "(B) 心室超速起搏（VOP）停止後的反應呈現 V-A-V 序列，為排除房室折返性心搏過速（AVRT）之專一特徵，可直接確立診斷為局灶性心房頻脈（Atrial Tachycardia, AT）",
+      "(C) 在典型的房室結迴旋性心搏過速（Typical Slow-Fast AVNRT）中，His-Refractory PVC 常規可提早激動心房，因逆傳快徑路直接延伸並解剖性連接至右心室心尖部心肌",
+      "(D) 若心搏過速進行中自發性出現一過性第二度房室傳導阻滯（2:1 AV block，心室脫落但心房率持續不變且心律不終止），順向型房室折返性心搏過速（Orthodromic AVRT）仍為唯一首選診斷",
+      "(E) 針對此患者之第一線根治性導管消融標靶，應於柯氏三角（Triangle of Koch）低位心室中隔處常規施行房室結慢徑路消融術（Slow Pathway Ablation）"
+    ],
+    "answer": 0,
+    "answer_letter": "A",
+    "core_rationale": "His 處於絕對不反應期時正常傳導軸線阻斷，此時心室 PVC 能提前心房激動或終止心律，為存在副傳導路徑（AP）參與環路之 100% 特異性證據（確立 AVRT）。VOP 停止後呈現 V-A-V 序列排除心房頻脈（AT 呈 V-A-A-V）。PPI - TCL < 115 ms 且 SA - VA < 85 ms 代表心室起搏點位於折返環路內部，確立順向型 AVRT（AVNRT 之間期 > 115 ms）。若發生 2:1 AV block 心室脫落，AVRT 折返環路必定斷裂而終止，若心搏過速持續則排除 AVRT。消融標靶為副傳導路徑本身，非慢徑路。",
+    "option_analysis": "• (A) 正確：His-Refractory PVC 提早心房激動確立 AP 存在，結合 PPI-TCL < 115 ms 確診順向型 AVRT。\n• (B) 錯誤：V-A-V 序列排除的是心房頻脈（AT），支持 AVRT 或 AVNRT；AT 呈 V-A-A-V 序列。\n• (C) 錯誤：AVNRT 心室為旁觀者，His 不反應期刺激無法逆傳穿透房室結，絕不可能提早心房激動。\n• (D) 錯誤：AVRT 依賴心室傳導，若出現 2:1 AV block 必立即終止；能伴隨 2:1 AV block 持續者為心房頻脈（AT）。\n• (E) 錯誤：慢徑路消融是治療 AVNRT 之手段；本例為隱性中隔旁道 AVRT，消融標靶為房室環上之副傳導路徑。",
+    "pearls": [
+      "His-Refractory PVC 提早心房激動 → 100% 證實存在副傳導路徑（確診 AVRT）。",
+      "VOP 終止序列：V-A-V 序列排除 AT（支持 AVNRT / AVRT）；V-A-A-V 序列確診 AT。",
+      "PPI - TCL 差值：< 115 ms 支持 AVRT（心室在環路內）；> 115 ms 支持 AVNRT（心室為旁觀者）。"
+    ],
+    "trials": [
+      "2019 ESC SVT Guidelines (EHJ 2020)",
+      "Knight BP et al. (JACC 1999)"
+    ]
+  },
+  {
+    "id": 22,
+    "date": "2026-10-27",
+    "subspecialty": "Valvular_ACHD",
+    "subspecialty_name": "瓣膜與成人先天性心臟病",
+    "title": "次發性三尖瓣逆流（TR）新五級分級、經導管修補與置換術（TriClip / TRILUMINATE vs. EVOQUE / TRISCEND II）",
+    "stem": "一位 78 歲女性長期永久性心房顫動，腹脹、易飽脹感、下肢水腫及活動疲倦（NYHA III）加劇，對高劑量利尿劑反應不佳。\n• 理學檢查：血壓 110/68 mmHg、心跳 74 bpm 不規則；頸靜脈怒張見明顯收縮期 c-v 波（Lancisi 徵候），胸骨左下緣 Grade 3/6 全收縮期雜音隨吸氣增強（Carvallo 徵候陽性）；博動性肝腫大與大量腹水。\n• 心臟超音波：LVEF 58%，左心無瓣膜異常；右心房與右心室擴大，但右室收縮力尚保留（TAPSE 18 mm, RV FAC 38%, S' 10.5 cm/s）；三尖瓣環顯著擴大（45 mm / 24 mm/m²），瓣葉接合不良缺損 gap 8.5 mm；彩色都卜勒測得 Vena contracta 16 mm，EROA 72 mm²，RegVol 68 mL；肝靜脈見收縮期逆流；估計 PASP 34 mmHg。心臟團隊評估開胸手術死亡風險高達 8.5%。\n\n針對此病人之 TR 分級、經導管三尖瓣介入治療（TTVI：TriClip vs. EVOQUE）與右心衰竭臨床決策，依據最新指引與試驗何者最為適當？",
+    "options": [
+      "(A) 依據現代擴展型五級分級系統，EROA 72 mm² 且 Vena contracta 16 mm 歸類為「巨大級三尖瓣逆流（Massive TR, 4+）」；依據指標性 TRILUMINATE Pivotal（NEJM 2023）與 TRISCEND II 臨床試驗，在手術高風險之嚴重症狀性 TR 患者中，經導管三尖瓣介入治療（TTVI：TriClip 邊緣修補或 EVOQUE 置換）合併藥物治療能顯著改善 KCCQ 生活品質評分與心衰竭功能分級",
+      "(B) 在 TRILUMINATE Pivotal 臨床試驗中，使用 TriClip 施行經導管三尖瓣邊緣修補（T-TEER），證實相較於單純藥物治療能顯著降低 1 年全因死亡率達 60%",
+      "(C) 針對次發性三尖瓣逆流患者，無論外科手術風險高低，單純開胸外科三尖瓣置換手術均是指引唯一列為第一線改善長期存活率的治本首選",
+      "(D) 若此病人已進展至末期不可逆之重度右心室衰竭（TAPSE < 10 mm, RV FAC < 20%）合併不可逆重度毛細血管前肺高壓（PVR > 8 Wood Units, PASP > 70 mmHg），經導管三尖瓣置換術（TTVR）是指引列為緊急搶救生命之 Class I 絕對適應症",
+      "(E) 肝靜脈都卜勒超音波呈現收縮期血流逆流（Systolic flow reversal），為心房顫動患者之正常生理代償表現，與三尖瓣逆流嚴重度完全無關"
+    ],
+    "answer": 0,
+    "answer_letter": "A",
+    "core_rationale": "現代 TR 五級分級：Mild (1+), Moderate (2+), Severe (3+: EROA 40–59 mm², VC 7–13.9 mm), Massive (4+: EROA 60–79 mm², VC 14–20.9 mm), Torrential (5+: EROA ≥ 80 mm², VC ≥ 21 mm)。本例 EROA 72 mm²、VC 16 mm 屬 Massive TR (4+)。TRILUMINATE Pivotal (NEJM 2023) 證實 TriClip 顯著改善 KCCQ 生活品質（+12.3 分）並大幅降低 TR，但 1 年死亡率與心衰住院無顯著差異。TRISCEND II 證實 EVOQUE 經導管三尖瓣置換（TTVR）能使 98.8% 患者 TR 降至 ≤ Mild (1+)，且顯著改善生活品質（KCCQ +17.8 分）。單純外科三尖瓣手術死亡率極高（約 8–10%）。血流動力學警訊：當右室嚴重衰竭失代償或不可逆重度肺高壓時，TR 扮演右心減壓安全閥，貿然完全消除 TR 會引發急性右室後負荷不匹配與致死性右心衰竭休克（TTVI 禁忌）。肝靜脈收縮期逆流為重度至洪流級 TR 之特異都卜勒徵候。",
+    "option_analysis": "• (A) 正確：符合 Massive TR (4+) 定義；TRILUMINATE 與 TRISCEND II 試驗確立 TTVI 大幅改善生活品質與心功能。\n• (B) 錯誤：TRILUMINATE Pivotal 於 1 年追蹤中，TriClip 與對照組之全因死亡率與心衰住院率並無統計差異。\n• (C) 錯誤：單純外科三尖瓣置換手術死亡率極高，指引非一律列為第一線，高風險者應由心臟團隊評估 TTVI。\n• (D) 錯誤：重度不可逆右心室衰竭與重度肺高壓患者，貿然消除 TR 會引發急性右室衰竭休克，為 TTVI 之主要禁忌症。\n• (E) 錯誤：肝靜脈收縮期血流逆流是重度以上 TR 之特異性病理血流動力學表徵，非正常生理表現。",
+    "pearls": [
+      "TR 五級分級：Severe (3+, EROA 40–59 mm²) → Massive (4+, EROA 60–79 mm²) → Torrential (5+, EROA ≥ 80 mm²)。",
+      "TRILUMINATE Pivotal (NEJM 2023)：TriClip 顯著改善 KCCQ 生活品質（+12.3 分），但 1 年死亡率無顯著差異。",
+      "TRISCEND II 試驗：EVOQUE 經導管置換（TTVR）消除 98.8% TR 至 ≤ Mild，為首個獲 FDA 核准之 TTVR 系統。",
+      "TTVI 禁忌紅燈：不可逆重度右室衰竭（TAPSE < 10 mm）或重度肺高壓（PVR > 5–8 WU）不可貿然消除 TR！"
+    ],
+    "trials": [
+      "TRILUMINATE Pivotal (NEJM 2023)",
+      "TRISCEND II Trial (NEJM)",
+      "Hahn RT et al. TR Classification (JACC 2017)"
+    ]
   }
 ]
