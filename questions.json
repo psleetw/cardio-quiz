@@ -626,5 +626,35 @@
       "TRISCEND II Trial (NEJM)",
       "Hahn RT et al. TR Classification (JACC 2017)"
     ]
+  },
+  {
+    "id": 23,
+    "date": "2026-10-28",
+    "subspecialty": "Imaging_ICU",
+    "subspecialty_name": "心血管影像與重症血流動力學",
+    "title": "急性主動脈剝離（Stanford A / DeBakey I）併發心包填塞之奇脈（Pulsus Paradoxus）與處置大忌",
+    "stem": "一位 56 歲男性有高血壓控制不佳病史，突發劇烈撕裂樣胸痛延伸至肩胛間區 2 小時送急診。\n• 生命徵象：右上臂血壓 86/58 mmHg、左上臂 84/56 mmHg、心跳 114 bpm（竇性心搏過速）、呼吸 24 bpm、血氧 94%；手動血壓計檢測見正常吸氣時收縮壓由 88 驟降至 74 mmHg（奇脈 Pulsus Paradoxus 達 14 mmHg，> 10–12 mmHg）。\n• 理學檢查：心音遙遠微弱、頸靜脈怒張且 y 下降減弱（Beck 三聯徵）；兩側橈動脈對稱微弱。\n• ECG：竇性心搏過速伴隨電交替（Electrical alternans）與肢體導極低電壓，無 ST 段上升。\n• 床邊超音波（POCUS / TTE）：中至大量心包積液伴高回音纖維條帶（血心包 Hemopericardium）；胸骨旁長軸見升主動脈擴大（52 mm）且腔內有收縮期擺動之內膜皮瓣（Intimal flap）；心尖四腔切面見右心房收縮期塌陷（> 1/3 心動週期）與右心室舒張早期塌陷；下腔靜脈（IVC）擴張 24 mm 且無呼吸塌陷；二尖瓣脈衝都卜勒吸氣時 E 波流速下降 34%（> 25%）。\n• 主動脈電腦斷層血管攝影（CTA）：確診為急性 Stanford Type A（DeBakey Type I）主動脈剝離，撕裂口位於竇管交界上方 1.5 cm 並延伸至雙側髂動脈；心包腔內見高衰減值液體（45 HU），證實剝離破裂入心包腔引發急性心包填塞。\n\n針對此病人之血流動力學機轉、超音波判讀、分型與急重症處置決策，依據 2024 ESC 與 2022 ACC/AHA 主動脈疾病指引，下列敘述何者最為適當？",
+    "options": [
+      "(A) 因病患處於心因性休克合併心包填塞，急診第一線處置應立即施行床邊大量（500–1,000 mL）心包穿刺引流術（Pericardiocentesis）以快速解除壓迫，是指引列為第一線救命的根治性 Class I 首選處置",
+      "(B) 在急性 Type A 主動脈剝離併發血心包與填塞時，急診常規大量心包穿刺引流列為禁忌（Class III 危害），因驟降心包腔壓力與血壓反彈會誘發升主動脈破裂口災難性大出血致死；唯一能根本挽救生命的處置為立即施行緊急開胸外科主動脈修補手術",
+      "(C) 於心包填塞之心臟超音波判讀中，左心房舒張早期塌陷是出現最早且敏感度最高的徵候，而右心室舒張早期塌陷則常見於正常心臟且不具備診斷特異性",
+      "(D) 奇脈（Pulsus Paradoxus）之生理學定義為吸氣時動脈收縮壓反常「升高」> 10 mmHg，是由於吸氣時血液優先分流至體循環所致",
+      "(E) 依據 DeBakey 解剖分型，主動脈撕裂病灶若起源於降主動脈且僅局限於降主動脈，完全未累及升主動脈與主動脈弓者，分類為 DeBakey Type I"
+    ],
+    "answer": 1,
+    "answer_letter": "B",
+    "core_rationale": "在急性 Stanford Type A 主動脈剝離引發的血心包與心包填塞中，心包高壓狀態實質上對主動脈破裂口形成外部壓迫止血（Tamponade effect）。若急診常規盲目大量引流心包液，心包腔壓力驟降且體循環血壓回升，會導致主動脈破口瞬間災難性大破裂（Catastrophic aortic re-rupture）並引發致死性大出血，因此常規大量心包穿刺為 Class III 危害禁忌！唯一治本救命處置為緊急開胸手術修補（Class I）。奇脈定義為吸氣相收縮壓下降 ≥ 10–12 mmHg。超音波最早且最敏感徵候為右心房收縮期塌陷，右心室舒張早期塌陷則具極高特異性。DeBakey Type I 同時累及升主動脈與降主動脈；Type II 僅限升主動脈；Type III 僅累及降主動脈。",
+    "option_analysis": "• (A) 錯誤：Type A 剝離併心包填塞常規大量心包穿刺為 Class III 危害，易引發破口再破裂致死。\n• (B) 正確：精準闡述心包填塞外壓止血之機轉、常規穿刺禁忌、以及立即緊急開胸手術的 Class I 地位。\n• (C) 錯誤：右心房收縮期塌陷（> 1/3 心動週期）是最早且敏感度最高的指標；右心室舒張早期塌陷特異性極高。\n• (D) 錯誤：奇脈定義為吸氣相收縮壓「下降」≥ 10–12 mmHg，非上升。\n• (E) 錯誤：僅局限於降主動脈者為 DeBakey Type III（對應 Stanford Type B）；DeBakey Type I 累及升主動脈並延伸至遠端。",
+    "pearls": [
+      "Type A 剝離併血心包大忌：常規大量心包穿刺為 Class III 危害（防減壓後破口大破裂致死），唯一救命處置為立即開胸手術！",
+      "心包填塞超音波三聯徵：右房收縮期塌陷（最敏感）+ 右室舒張早期塌陷（高特異性）+ 二尖瓣 E 波吸氣流速下降 > 25%。",
+      "奇脈 (Pulsus Paradoxus)：正常吸氣壓降 < 10 mmHg；吸氣相收縮壓下降 ≥ 10–12 mmHg 為奇脈陽性（心室相互依存性）。",
+      "DeBakey 分型速記：Type I (升主動脈+降主動脈)、Type II (僅升主動脈)、Type III (僅降主動脈)。"
+    ],
+    "trials": [
+      "2024 ESC Aortic Guidelines (EHJ 2024)",
+      "2022 ACC/AHA Aortic Disease Guidelines",
+      "Cruz I et al. Tamponade in Aortic Dissection"
+    ]
   }
 ]
