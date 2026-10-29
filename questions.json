@@ -656,5 +656,36 @@
       "2022 ACC/AHA Aortic Disease Guidelines",
       "Cruz I et al. Tamponade in Aortic Dissection"
     ]
+  },
+  {
+    "id": 24,
+    "date": "2026-10-29",
+    "subspecialty": "Hypertension_Lipid",
+    "subspecialty_name": "高血壓與血脂預防醫學",
+    "title": "2024 ESC 高血壓最新指引三大革新（升高血壓 Elevated BP、120-129 目標值、啟動用藥門檻）與 722 實證",
+    "stem": "一位 62 歲男性有 8 年第二型糖尿病病史（HbA1c 7.1%，服 Metformin 1,000 mg BID）及慢性腎臟病第 2 期伴隨微量白蛋白尿（UACR 180 mg/g，eGFR 76 mL/min/1.73 m²）至心臟科門診做心血管健康檢查。\n• 理學檢查：BMI 27.2 kg/m²，標準化診室血壓（靜坐 5 分鐘後自動化震盪血壓計量測 3 次取後 2 次平均）：兩次間隔兩週之門診診室血壓均為 134/84 mmHg。\n• 診室外血壓監測：依據 722 原則進行連續 7 天居家血壓監測（HBPM，早晚各量 2 遍取平均），測得 7 天平均居家血壓為 132/82 mmHg。\n• 心血管風險評估：患者合併糖尿病與微量白蛋白尿（標的器官受損），10 年重大心血管事件風險（SCORE2）高達 ≥ 10%，屬高危險/極高危險群。\n• 依據 2024 ESC 最新高血壓指引血壓分類，其診室血壓 134/84 mmHg 落入新設立之「升高血壓（Elevated Blood Pressure，定義為 120–139 / 70–89 mmHg）」範疇。\n\n針對此病人之血壓分類、心血管風險分層、藥物啟動時機與血壓控制目標值，依據 2024 ESC 高血壓與升高血壓指引及 2022 TSOC/THS 台灣高血壓指引，下列敘述何者最為適當？",
+    "options": [
+      "(A) 依據 2024 ESC 指引，診室血壓 134/84 mmHg 歸類為「正常血壓（Non-Elevated BP）」；因診室血壓未達 140/90 mmHg，無論患者是否合併糖尿病、白蛋白尿或高心血管風險，降壓藥物治療均列為絕對禁忌",
+      "(B) 依據 2024 ESC 指引，此病人之血壓落入新定義之「升高血壓（Elevated BP，120–139 / 70–89 mmHg）」範疇；因其合併糖尿病與微量白蛋白尿（屬高/極高心血管風險），在生活型態介入 3 個月後若收縮壓仍 ≥ 130 mmHg，指引強烈建議啟動降血壓藥物治療（Class I，首選 ACEI 或 ARB 兼顧腎臟保護），且若能耐受，其治療目標收縮壓應降至 120–129 mmHg",
+      "(C) 2024 ESC 指引針對 65 歲以上長者全面放寬降壓標準，強制規定收縮壓絕不可降至 140 mmHg 以下，以免引發失智症與缺血性中風",
+      "(D) 依據 2024 ESC 指引，真正的高血壓（Hypertension）診斷門檻已大幅上修至診室血壓 ≥ 160/100 mmHg，凡低於 160 mmHg 者一律僅需限制飲食鈉鹽，不得使用任何降壓藥物",
+      "(E) 2022 TSOC/THS 台灣高血壓指引建議高血壓的確診應完全依賴單次偶發門診診室血壓，並明確反對使用居家血壓監測（HBPM）"
+    ],
+    "answer": 1,
+    "answer_letter": "B",
+    "core_rationale": "2024 ESC 高血壓指引三大核心革新：① 新增「升高血壓（Elevated BP: 120–139 / 70–89 mmHg）」取代舊版正常高值，未升高血壓（Non-Elevated）嚴格定為 < 120/70 mmHg，高血壓（Hypertension）為 ≥ 140/90 mmHg。② 升高血壓患者若合併已確立 ASCVD、糖尿病標的器官受損或 SCORE2 ≥ 10%（高危/極高危），生活型態 3 個月後 SBP 仍 ≥ 130 mmHg 即強烈推薦啟動藥物治療（Class I）。③ 大一統治療目標值：收縮壓統一降至 120–129 mmHg（若可耐受，不分年齡，包含長者，基於 SPRINT 與 STEP 試驗）。2022 TSOC/THS 台灣指引早已將 722 居家血壓定為黃金標準，門檻定為 ≥ 130/80 mmHg。",
+    "option_analysis": "• (A) 錯誤：134/84 mmHg 屬「升高血壓（Elevated BP）」，非正常；高心血管風險者生活型態後未達標強烈建議服藥（Class I），非禁忌。\n• (B) 正確：精準闡述 Elevated BP 定義、高風險啟動藥物標準（Class I，首選 ACEI/ARB）及 120–129 mmHg 目標值。\n• (C) 錯誤：SPRINT 與 STEP（華人試驗）證實長者強化降壓至 110–130 mmHg 顯著降低中風與死亡；2024 ESC 指引長者目標同為 120–129 mmHg。\n• (D) 錯誤：高血壓定義門檻仍為診室 ≥ 140/90 mmHg（居家 ≥ 130/80 mmHg），非 160 mmHg。\n• (E) 錯誤：2022 TSOC/THS 台灣指引以「722 居家血壓監測」為全國推廣之確診黃金標準。",
+    "pearls": [
+      "2024 ESC 三級血壓分類：Non-elevated (< 120/70) → Elevated (120–139/70–89) → Hypertension (≥ 140/90 mmHg)。",
+      "Elevated BP 用藥時機：生活型態 3 個月後，若合併 ASCVD/糖尿病器官受損/SCORE2 ≥ 10% 且 SBP ≥ 130 mmHg → Class I 啟動藥物！",
+      "目標值大一統：全體成年人收縮壓目標統一為 120–129 mmHg（若耐受良好，不分年齡）。",
+      "台灣 722 原則：連續 7 天、早晚 2 回、每回 2 遍取平均值；居家血壓 ≥ 130/80 mmHg 即為高血壓。"
+    ],
+    "trials": [
+      "2024 ESC Hypertension Guidelines (EHJ 2024)",
+      "STEP Trial (NEJM 2021)",
+      "SPRINT Trial (NEJM 2015)",
+      "2022 TSOC/THS Hypertension Guidelines"
+    ]
   }
 ]
