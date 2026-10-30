@@ -687,5 +687,35 @@
       "SPRINT Trial (NEJM 2015)",
       "2022 TSOC/THS Hypertension Guidelines"
     ]
+  },
+  {
+    "id": 25,
+    "date": "2026-10-30",
+    "subspecialty": "HF_CMP",
+    "subspecialty_name": "心臟衰竭與心肌病變",
+    "title": "急性失代償性心衰竭（ADHF）利尿劑抗性監測（尿鈉指標）、序列性腎小管阻斷與 ADVOR / EMPULSE 實證",
+    "stem": "一位 71 歲男性有缺血性心肌病變（LVEF 28%）及慢性腎臟病第 3b 期病史（基準肌酸酐 1.7 mg/dL，eGFR 38 mL/min/1.73 m²），因急性失代償性心衰竭（ADHF）合併重度體液過載入住心臟加護病房。\n• 居家常規用藥：口服 Furosemide 40 mg BID、Sacubitril/Valsartan 24/26 mg BID、Carvedilol 6.25 mg BID 及 Spironolactone 25 mg QD。\n• 入院評估：端坐呼吸、頸靜脈怒張至下頜角、雙肺滿布濕囉音、大量腹水及雙下肢重度凹陷性水腫（3+）；血壓 112/68 mmHg、心跳 82 bpm；血清鈉 134 mEq/L、鉀 4.4 mEq/L、肌酸酐 1.8 mg/dL、NT-proBNP 6,400 pg/mL。\n• 臨床處置與反應監測：依指引給予居家劑量兩倍之靜脈 Furosemide（80 mg IV bolus）。\n  - 給藥後 2 小時單次尿鈉檢測（Spot urinary sodium）：僅 32 mmol/L（顯著低於 50–70 mmol/L）。\n  - 前 4 小時平均每小時尿量僅 40 mL/h（顯著低於 100–150 mL/h），呈現典型「利尿劑抗性（Diuretic Resistance）」。\n  - 醫療團隊隨即將靜脈 Furosemide 劑量倍增至 160 mg IV，但 2 小時尿鈉仍僅 42 mmol/L，體液鬱血未見緩解。\n\n針對此病人之利尿劑抗性監測、病理生理機轉與序列性腎小管阻斷（Sequential Nephron Blockade）策略，依據最新心衰竭指引與指標試驗，下列敘述何者最為適當？",
+    "options": [
+      "(A) 在急性心衰竭利尿評估中，給予靜脈環利尿劑 2 小時後單次尿鈉 < 50–70 mmol/L 代表利尿反應極佳且鈉排泄充分；因此目前應立即將利尿劑劑量減半以防血管內體積過度耗竭",
+      "(B) 針對此體液過載且合併利尿劑抗性患者，於環利尿劑基礎上合併近端腎小管碳酸酐酶抑制劑 Acetazolamide（500 mg IV QD）為具備實證之序列性腎小管阻斷策略；指標性 ADVOR 試驗（NEJM 2022）證實其能顯著提升 3 天內成功去充血（Successful decongestion）之比率，且未增加低血壓或嚴重不良事件",
+      "(C) 依據 EMPULSE 臨床試驗，急性心衰竭住院患者於住院期間早期啟動 SGLT2 抑制劑（Empagliflozin 10 mg QD）列為禁忌，因其會引發不可逆之急性腎衰竭與嚴重正常血糖酮酸中毒",
+      "(D) 在 CLOROTIC 臨床試驗中，於急性心衰竭患者靜脈 Furosemide 基礎上合併口服 Hydrochlorothiazide（HCTZ），結果顯示相較於安慰劑組反而顯著加重體液滯留並減少 72 小時體重下降幅度",
+      "(E) 長期使用環利尿劑引發利尿劑抗性之主要細胞病理機轉，為遠端曲小管與集尿管上皮細胞發生進行性萎縮與凋亡，導致腎臟完全喪失鈉再吸收能力"
+    ],
+    "answer": 1,
+    "answer_letter": "B",
+    "core_rationale": "靜脈 Loop 利尿劑給藥後 2 小時單次尿鈉（Spot urine sodium）< 50–70 mmol/L（或 6 小時尿量 < 100–150 mL/h）代表利尿反應不良與利尿劑抗性。長期 Loop 利尿劑刺激會引發遠曲小管代償性細胞肥大（Braking phenomenon）與近端小管再吸收增加。序列性腎小管阻斷（Sequential Nephron Blockade）：ADVOR 試驗 (NEJM 2022) 證實合併 Acetazolamide（500 mg IV QD 抑制近端小管碳酸酐酶）顯著提升 3 天成功去充血率（42.2% vs. 30.5%, RR 1.46, p < 0.001）且不增腎損。CLOROTIC (EHJ 2023) 證實合併 HCTZ 顯著增加體重減輕與 24 小時尿量。EMPULSE (Nat Med 2022) 證實急性心衰竭住院穩定後早期啟動 Empagliflozin 10 mg 顯著提升 90 天綜合臨床獲益（Win ratio 1.36, p = 0.0054）。",
+    "option_analysis": "• (A) 錯誤：2 小時尿鈉 < 50–70 mmol/L 代表利尿反應不良與抗性，減半利尿劑會加劇肺水腫與充血致死。\n• (B) 正確：精準闡述 ADVOR 試驗之近端小管阻斷機轉、42.2% 成功去充血率與安全性。\n• (C) 錯誤：EMPULSE 證實早期住院啟動 Empagliflozin 耐受極佳且 90 天臨床獲益顯著優於安慰劑（Win ratio 1.36）。\n• (D) 錯誤：CLOROTIC 試驗證實 HCTZ 能顯著增加體重減輕（-2.3 kg vs. -1.5 kg, p = 0.002）與利尿反應。\n• (E) 錯誤：長期使用 Loop 利尿劑引發的是遠端小管「代償性肥大與功能亢進（Hypertrophy & hyperfunction）」，非萎縮凋亡。",
+    "pearls": [
+      "利尿反應評估黃金標準：給予 IV Loop 利尿劑後 2 小時單次尿鈉（Spot urine Na）< 50–70 mmol/L，或 6 小時尿量 < 100–150 mL/h → 判定利尿劑抗性！",
+      "序列性腎小管阻斷三大支柱：① 近端小管 (ADVOR 試驗：Acetazolamide 500 mg IV)；② 遠端小管 (CLOROTIC 試驗：HCTZ/Metolazone)；③ 早期 SGLT2i (EMPULSE 試驗：Empagliflozin)。",
+      "利尿劑煞車現象 (Braking phenomenon)：長期 Loop 利尿劑導致遠曲小管上皮細胞代償性肥大，促使鈉再吸收暴增。"
+    ],
+    "trials": [
+      "ADVOR Trial (NEJM 2022)",
+      "EMPULSE Trial (Nat Med 2022)",
+      "CLOROTIC Trial (Eur Heart J 2023)",
+      "2023 ESC Heart Failure Guidelines Update"
+    ]
   }
 ]
